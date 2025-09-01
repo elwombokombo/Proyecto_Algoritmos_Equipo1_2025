@@ -10,3 +10,6 @@
 *.iml
 .idea/
 .vscode/
+
+#Ignorar .txt
+/target/*.txt
