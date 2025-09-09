@@ -1,5 +1,5 @@
 package com.example.Interfaces;
 
-public interface IEquipo {
-
+public class IRanking {
+    
 }

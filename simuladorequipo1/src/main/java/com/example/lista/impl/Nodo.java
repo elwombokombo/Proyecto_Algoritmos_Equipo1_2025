@@ -1,4 +1,5 @@
 package com.example.lista.impl;
+import com.example.lista.TDANodo;
 public class Nodo <T extends Comparable<T>> implements TDANodo <T> {
 
     private T dato;
