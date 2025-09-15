@@ -1,21 +1,14 @@
 package com.example.Interfaces;
 
+import com.example.ClasesProyecto.Partido;
 import com.example.lista.TDALista;
-
 import java.time.LocalDateTime;
 
 public interface IPartido {
+    Boolean pilaVacia();
+    String mostrarMarcador(Partido.Marcador marcador);
+    int golesLocal();
+    int golesVisitante();
+    int maxGoles();
 
-    Gol extends Comparable<Gol> {
-            String getEquipo();
-            String getJugador();
-            int getMinuto();
-        }
-    Resultado extends Comparable<Resultado> {
-        String getLocal();
-        String getVisitante();
-        int getGolesLocal();
-        int getGolesVisitante();
-        java.time.LocalDateTime getFecha();
-    }
 }

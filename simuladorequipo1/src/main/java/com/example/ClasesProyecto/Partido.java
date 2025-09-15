@@ -1,5 +1,6 @@
 package com.example.ClasesProyecto;
 
+import com.example.Interfaces.IPartido;
 import com.example.lista.impl.TDAListaEnlazada;
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -20,11 +21,7 @@ public class Partido {
         this(equipoLocal, equipoVisitante, division, new Random(), 6);
     }
 
-    public Partido(String equipoLocal,
-                   String equipoVisitante,
-                   String division,
-                   Random rnd,
-                   int maxGolesPorEquipo) {
+    public Partido(String equipoLocal, String equipoVisitante, String division, Random rnd, int maxGolesPorEquipo) {
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.division = division;
@@ -32,20 +29,12 @@ public class Partido {
         this.maxGolesPorEquipo = maxGolesPorEquipo;
     }
 
-    public Partido(Equipo local, Equipo visitante) {
-        this(local.getNombre(),
-                visitante.getNombre(),
-                (local.getDivision() != null ? local.getDivision().toString() : ""),
-                new Random(),
-                6);
-    }
-
     public Marcador jugar() {
-        int gl = rnd.nextInt(maxGolesPorEquipo + 1);
-        int gv = rnd.nextInt(maxGolesPorEquipo + 1);
-        Marcador m = new Marcador(equipoLocal, equipoVisitante, division, gl, gv);
-        pila.push(m);
-        return m;
+        int golesLocal = rnd.nextInt(maxGolesPorEquipo + 1);
+        int golesVisitante = rnd.nextInt(maxGolesPorEquipo + 1);
+        Marcador tanteador = new Marcador(equipoLocal, equipoVisitante, division, golesLocal, golesVisitante);
+        pila.push(tanteador);
+        return tanteador;
     }
 
     public Marcador ultimo() {
@@ -67,8 +56,7 @@ public class Partido {
         private final int golesLocal;
         private final int golesVisitante;
 
-        public Marcador(String equipoLocal, String equipoVisitante, String division,
-                        int golesLocal, int golesVisitante) {
+        public Marcador(String equipoLocal, String equipoVisitante, String division, int golesLocal, int golesVisitante) {
             this.equipoLocal = equipoLocal;
             this.equipoVisitante = equipoVisitante;
             this.division = division;
