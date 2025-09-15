@@ -22,11 +22,11 @@ public class Partido implements IPartido {
     }
 
     public Marcador jugar() {
-        int gl = rnd.nextInt(maxGolesPorEquipo + 1); // 0..max
-        int gv = rnd.nextInt(maxGolesPorEquipo + 1);
-        Marcador m = new Marcador(equipoLocal, equipoVisitante, division, gl, gv);
-        pila.push(m);
-        return m;
+        int golesDelLocal = rnd.nextInt(maxGolesPorEquipo + 1); // 0..max
+        int golesDelVisitante = rnd.nextInt(maxGolesPorEquipo + 1);
+        Marcador tanteador = new Marcador(equipoLocal, equipoVisitante, division, golesDelLocal, golesDelVisitante);
+        pila.push(tanteador);
+        return tanteador;
     }
 
     public Marcador ultimo() { return pila.peek(); }
