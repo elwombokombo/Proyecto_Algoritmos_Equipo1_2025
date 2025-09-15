@@ -4,7 +4,7 @@ import com.example.Interfaces.IJugador;
 import com.example.lista.TDALista;
 import com.example.lista.impl.TDAListaEnlazada;
 
-public class Jugador implements IJugador {
+public class Jugador implements IJugador, Comparable<Jugador> {
 
     TDALista<String> s = new TDAListaEnlazada<>(); 
     private String nombre;
