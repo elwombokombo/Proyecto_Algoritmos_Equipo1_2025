@@ -7,8 +7,9 @@ import java.time.LocalDateTime;
 public interface IPartido {
     Boolean pilaVacia();
     String mostrarMarcador(Partido.Marcador marcador);
+    String equipoLocal();
+    String equipoVisitante();
     int golesLocal();
     int golesVisitante();
     int maxGoles();
-
 }

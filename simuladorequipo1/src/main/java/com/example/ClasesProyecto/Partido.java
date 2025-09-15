@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Random;
 
-public class Partido {
+public class Partido implements IPartido {
 
     private final String equipoLocal;
     private final String equipoVisitante;
@@ -17,36 +17,55 @@ public class Partido {
 
     private final Deque<Marcador> pila = new ArrayDeque<>();
 
-    public Partido(String equipoLocal, String equipoVisitante, String division) {
-        this(equipoLocal, equipoVisitante, division, new Random(), 6);
-    }
-
     public Partido(String equipoLocal, String equipoVisitante, String division, Random rnd, int maxGolesPorEquipo) {
-        this.equipoLocal = equipoLocal;
-        this.equipoVisitante = equipoVisitante;
-        this.division = division;
-        this.rnd = rnd;
-        this.maxGolesPorEquipo = maxGolesPorEquipo;
+        this.equipoLocal = equipoLocal;this.equipoVisitante = equipoVisitante;this.division = division; this.rnd = rnd; this.maxGolesPorEquipo = maxGolesPorEquipo;
     }
 
     public Marcador jugar() {
-        int golesLocal = rnd.nextInt(maxGolesPorEquipo + 1);
-        int golesVisitante = rnd.nextInt(maxGolesPorEquipo + 1);
-        Marcador tanteador = new Marcador(equipoLocal, equipoVisitante, division, golesLocal, golesVisitante);
-        pila.push(tanteador);
-        return tanteador;
+        int gl = rnd.nextInt(maxGolesPorEquipo + 1); // 0..max
+        int gv = rnd.nextInt(maxGolesPorEquipo + 1);
+        Marcador m = new Marcador(equipoLocal, equipoVisitante, division, gl, gv);
+        pila.push(m);
+        return m;
     }
 
-    public Marcador ultimo() {
-        return pila.peek();
+    public Marcador ultimo() { return pila.peek(); }
+
+    public Marcador desapilar() { return pila.pop(); }
+
+    public int cantidadEnPila() { return pila.size(); }
+
+    @Override
+    public Boolean pilaVacia() {
+        return pila.isEmpty();
     }
 
-    public Marcador desapilar() {
-        return pila.pop();
+    @Override
+    public String mostrarMarcador(Partido.Marcador marcador) {
+        return (marcador == null) ? "" : marcador.getMarcador();
     }
 
-    public int cantidadEnPila() {
-        return pila.size();
+    @Override
+    public String equipoLocal() { return equipoLocal; }
+
+    @Override
+    public String equipoVisitante() { return equipoVisitante; }
+
+    @Override
+    public int golesLocal() {
+        Marcador m = pila.peek();
+        return (m == null) ? 0 : m.getGolesLocal();
+    }
+
+    @Override
+    public int golesVisitante() {
+        Marcador m = pila.peek();
+        return (m == null) ? 0 : m.getGolesVisitante();
+    }
+
+    @Override
+    public int maxGoles() {
+        return maxGolesPorEquipo;
     }
 
     public static final class Marcador {
