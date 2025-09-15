@@ -9,6 +9,7 @@ public class Equipo implements IEquipo<Jugador> {
     private Division divisionAsignada;
 
     private TDAListaEnlazada<Jugador> jugadores;
+    private CalendarioPartido calendario;
 
     private int puntos;
     private int partidosJugados;
@@ -23,6 +24,7 @@ public class Equipo implements IEquipo<Jugador> {
         this.nombre = nombre;
         this.divisionAsignada = division;
         this.jugadores = new TDAListaEnlazada<>();
+        this.calendario = new CalendarioPartido<>();
         this.partidosJugados = 0;
         this.ganados = 0;
         this.empatados = 0;
@@ -99,9 +101,8 @@ public class Equipo implements IEquipo<Jugador> {
         str.append(jugadores.imprimir("|"));
         return str.toString();
     }
-
+    
     //Logica con los partidos, deberia hacer una clase que separe lo que es organizar los partidos
     //y en esta solo tener en cuenta las estadisticas
-
 
 }
