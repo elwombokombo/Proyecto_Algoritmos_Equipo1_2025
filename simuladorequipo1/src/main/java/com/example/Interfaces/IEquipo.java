@@ -2,14 +2,15 @@ package com.example.Interfaces;
 
 import com.example.ClasesProyecto.Equipo;
 
-public interface IEquipo <Jugador extends Comparable <Jugador>> {
+public interface IEquipo <Jugador> {
     int compareTo(Equipo otro);
     Boolean estaVacio ();
-    Jugador borrarJugador (String id);
+    Jugador borrarJugador (String idj);
     Boolean agregarJugador (Jugador jugador);
-    Jugador buscarJugador (Jugador j);
+    Jugador buscarJugador (String idj);
     int cantidadDeJugadores();
     String mostrarJugadores();
+    String getId();
     
 }
 
