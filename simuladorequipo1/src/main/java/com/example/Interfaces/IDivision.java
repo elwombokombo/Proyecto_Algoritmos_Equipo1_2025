@@ -1,6 +1,6 @@
 package com.example.Interfaces;
-
-public interface IDivision <Equipo extends Comparable <Equipo>>{
+import com.example.ClasesProyecto.Equipo;
+public interface IDivision {
     Equipo buscarEquipo(Equipo nombreEquipo);
 
     Boolean agregarEquipo(Equipo nuevo);
@@ -9,5 +9,5 @@ public interface IDivision <Equipo extends Comparable <Equipo>>{
 
     String mostrarEquipos();
 
-    void imprimirJugadores();
+    String imprimirJugadores();
 }

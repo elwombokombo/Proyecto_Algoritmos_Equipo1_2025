@@ -3,7 +3,7 @@ package com.example.ClasesProyecto;
 import com.example.Interfaces.IEquipo;
 import com.example.lista.impl.TDAListaEnlazada;
 
-public class Equipo implements IEquipo<Jugador> {
+public class Equipo implements IEquipo, Comparable<Equipo> {
     private String id;
     private String nombre;
     private Division divisionAsignada;

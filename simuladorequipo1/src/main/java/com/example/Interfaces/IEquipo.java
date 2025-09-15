@@ -1,8 +1,9 @@
 package com.example.Interfaces;
 
 import com.example.ClasesProyecto.Equipo;
+import com.example.ClasesProyecto.Jugador;
 
-public interface IEquipo <Jugador> {
+public interface IEquipo {
     int compareTo(Equipo otro);
     Boolean estaVacio ();
     Jugador borrarJugador (String idj);
