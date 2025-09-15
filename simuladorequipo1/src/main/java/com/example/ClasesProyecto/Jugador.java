@@ -1,17 +1,19 @@
 package com.example.ClasesProyecto;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.Interfaces.IJugador;
+import com.example.lista.TDALista;
+import com.example.lista.impl.TDAListaEnlazada;
 
-public class Jugador {
+public class Jugador implements IJugador {
 
+    TDALista<String> s = new TDAListaEnlazada<>(); 
     private String nombre;
     private int edad;
     private String posicion;
 
     private int golesConvertidos;
     private int tarjetasRecibidas;
-    private int partidosDisputados;  
+    private int partidosDisputados;
 
     public Jugador(String nombre, int edad, String posicion) {
         this.nombre = nombre;
@@ -22,27 +24,27 @@ public class Jugador {
         this.partidosDisputados = 0;
     }
 
-    public void sumarGol()        { golesConvertidos++; }
-    public void sumarTarjeta()    { tarjetasRecibidas++; }
-    public void registrarPartido(){ partidosDisputados++; } 
+    @Override public void sumarGol()         { golesConvertidos++; }
+    @Override public void sumarTarjeta()     { tarjetasRecibidas++; }
+    @Override public void registrarPartido() { partidosDisputados++; }
 
+    @Override
+    public TDALista<String> playerStats() {
 
-    public List<String> playerStats() {
-        List<String> s = new ArrayList<>();
-        s.add("Jugador: " + nombre);
-        s.add("Posición: " + posicion + " | Edad: " + edad);
-        s.add("PJ: " + partidosDisputados);
-        s.add("Goles: " + golesConvertidos);
-        s.add("Tarjetas: " + tarjetasRecibidas);
+        s.insertar("Jugador: " + nombre);
+        s.insertar("Posición: " + posicion + " | Edad: " + edad);
+        s.insertar("PJ: " + partidosDisputados);
+        s.insertar("Goles: " + golesConvertidos);
+        s.insertar("Tarjetas: " + tarjetasRecibidas);
         return s;
     }
 
-    public String getNombre() { return nombre; }
-    public int getEdad() { return edad; }
-    public String getPosicion() { return posicion; }
-    public int getGolesConvertidos() { return golesConvertidos; }
-    public int getTarjetasRecibidas() { return tarjetasRecibidas; }
-    public int getPartidosDisputados() { return partidosDisputados; }
+    @Override public String getNombre() { return nombre; }
+    @Override public int getEdad() { return edad; }
+    @Override public String getPosicion() { return posicion; }
+    @Override public int getGolesConvertidos() { return golesConvertidos; }
+    @Override public int getTarjetasRecibidas() { return tarjetasRecibidas; }
+    @Override public int getPartidosDisputados() { return partidosDisputados; }
 
     @Override
     public String toString() {
@@ -50,4 +52,3 @@ public class Jugador {
                " G:" + golesConvertidos + " T:" + tarjetasRecibidas;
     }
 }
-
