@@ -17,23 +17,35 @@ public class Equipo <Jugador extends Comparable <Jugador>> implements IEquipo<Ju
         this.jugadores = new TDAListaEnlazada<>();
     }
 
+    public String getId(){
+        return id;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public int compareTo(Equipo equipo){
+        return this.id.compareTo(equipo.getId());
+    }
+
     @Override
     public Boolean estaVacio() {
         return jugadores.esVacia();
     }
 
     @Override
-    public Jugador borrarJugador(String id) {
+    public Jugador borrarJugador(String id) {//hacer cuando este jugador
         return null;
     }
 
     @Override
-    public Boolean agregarJugador(Jugador nuevo) {
+    public Boolean agregarJugador(Jugador nuevo) { //Hacer cuando este jugador
         return null;
     
     }
 
-    public Jugador buscarJugador(Jugador j){
+    public Jugador buscarJugador(Jugador j){//Hacer cuando este jugador
         return null;
 
     }
@@ -42,10 +54,16 @@ public class Equipo <Jugador extends Comparable <Jugador>> implements IEquipo<Ju
         return jugadores.cantElementos();
     }
 
-    public void mostrarJugadores(){
-        System.out.println("Jugadores del equipo "+ this.nombre +":");
-        System.out.println(jugadores.imprimir( "|" ));
+    public String mostrarJugadores(){
+        return "Jugadores del equipo " + this.nombre + ": \n" + jugadores.imprimir( " | " );
     }
 
-    
+    public String mostrarJugadores3() {
+    StringBuilder str = new StringBuilder();
+    str.append("Jugadores del equipo ").append(this.nombre).append(":\n");
+    str.append(jugadores.imprimir("|"));
+    return str.toString();
+}
+
+
 }
