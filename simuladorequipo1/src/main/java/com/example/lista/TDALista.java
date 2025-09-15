@@ -15,6 +15,4 @@ public interface TDALista<T extends Comparable<T>> {
 
     boolean esVacia();
 
-    T obtenerPorIndice(Integer indice);
-
 }
