@@ -19,7 +19,7 @@ public class Partido implements IPartido, Comparable<Partido>{
     private int golesVisitante;
     private boolean terminado;
 
-    private PilaListaEnlazada<Partido> pila = new PilaListaEnlazada<>();
+    private static PilaListaEnlazada<Partido> historial = new PilaListaEnlazada<>();
 
     private Random rnd = new Random();
 
@@ -33,6 +33,7 @@ public class Partido implements IPartido, Comparable<Partido>{
         this.terminado = false;
     }
 
+    @Override
     // Simula el partido
     public void jugar() {
         if (terminado) return; // no repetir partido
@@ -46,13 +47,15 @@ public class Partido implements IPartido, Comparable<Partido>{
         division.registrarPartido(this);
     }
 
+    @Override
     // Actualiza estadísticas de ambos equipos
-    private void actualizarEstadisticas() {
+    public void actualizarEstadisticas() {
         localSumarEstadisticas();
         visitanteSumarEstadisticas();
     }
 
-    private void localSumarEstadisticas() {
+    @Override
+    public void localSumarEstadisticas() {
         local.golesAFavor += golesLocal;
         local.golesEnContra += golesVisitante;
         local.partidosTerminados++;
@@ -67,8 +70,8 @@ public class Partido implements IPartido, Comparable<Partido>{
             local.perdidos++;
         }
     }
-
-    private void visitanteSumarEstadisticas() {
+    @Override
+    public void visitanteSumarEstadisticas() {
         visitante.golesAFavor += golesVisitante;
         visitante.golesEnContra += golesLocal;
         visitante.partidosTerminados++;
@@ -84,28 +87,41 @@ public class Partido implements IPartido, Comparable<Partido>{
         }
     }
 
+    @Override
     // Métodos de consulta
     public String getMarcador() {
         return local.getNombre() + " " + golesLocal + " - " + golesVisitante + " " + visitante.getNombre();
     }
 
-    public boolean fueterminado() { return terminado; }
+    @Override
+    public boolean fueTerminado() { return terminado; }
+
+    @Override
     public int getGolesLocal() { return golesLocal; }
+
+    @Override
     public int getGolesVisitante() { return golesVisitante; }
+
+    @Override
     public Equipo getLocal() { return local; }
+
+    @Override
     public Equipo getVisitante() { return visitante; }
+
+    @Override
     public Division getDivision() { return division; }
 
+    @Override
     // Historial global de partidos terminados
-    public static Partido ultimoEnHistorial() {
+    public Partido ultimoEnHistorial() {
         return historial.tope();
     }
-
-    public static Partido desapilarHistorial() {
+    @Override
+    public Partido desapilarHistorial() {
         return historial.sacar();
     }
-
-    public static int cantidadHistorial() {
+    @Override
+    public int cantidadHistorial() {
         return historial.cantElementos();
     }
 
@@ -121,6 +137,7 @@ public class Partido implements IPartido, Comparable<Partido>{
     public String toString() {
         return getMarcador() + " (División: " + division.getNombre() + ")";
     }
+
 }
 
 
