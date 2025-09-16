@@ -2,97 +2,125 @@ package com.example.ClasesProyecto;
 
 import com.example.Interfaces.IPartido;
 import com.example.lista.impl.TDAListaEnlazada;
-import java.util.ArrayDeque;
-import java.util.Deque;
+
 import java.util.Random;
 
-public class Partido implements IPartido {
+import com.example.lista.TDAPila;
+import com.example.lista.impl.ColaEnlazada;
+import com.example.lista.impl.PilaListaEnlazada;
 
-    private final String equipoLocal;
-    private final String equipoVisitante;
-    private final String division;
+public class Partido implements IPartido, Comparable<Partido>{
+    
+    private Equipo local;
+    private Equipo visitante;
+    private Division division;
 
-    private final Random rnd;
-    private final int maxGolesPorEquipo;
+    private int golesLocal;
+    private int golesVisitante;
+    private boolean terminado;
 
-    private final Deque<Marcador> pila = new ArrayDeque<>();
+    private PilaListaEnlazada<Partido> pila = new PilaListaEnlazada<>();
 
-    public Partido(String equipoLocal, String equipoVisitante, String division, Random rnd, int maxGolesPorEquipo) {
-        this.equipoLocal = equipoLocal;this.equipoVisitante = equipoVisitante;this.division = division; this.rnd = rnd; this.maxGolesPorEquipo = maxGolesPorEquipo;
+    private Random rnd = new Random();
+
+    public Partido(Equipo local, Equipo visitante, Division division) {
+        this.local = local;
+        this.visitante = visitante;
+        this.division = division;
+        this.rnd = rnd; 
+        this.golesLocal = 0;
+        this.golesVisitante = 0;
+        this.terminado = false;
     }
 
-    public Marcador jugar() {
-        int golesDelLocal = rnd.nextInt(maxGolesPorEquipo + 1); // 0..max
-        int golesDelVisitante = rnd.nextInt(maxGolesPorEquipo + 1);
-        Marcador tanteador = new Marcador(equipoLocal, equipoVisitante, division, golesDelLocal, golesDelVisitante);
-        pila.push(tanteador);
-        return tanteador;
+    // Simula el partido
+    public void jugar() {
+        if (terminado) return; // no repetir partido
+
+        golesLocal = rnd.nextInt(6);     // 0 a 5 goles
+        golesVisitante = rnd.nextInt(6);
+
+        actualizarEstadisticas();
+
+        terminado = true;
+        historial.push(this);
     }
 
-    public Marcador ultimo() { return pila.peek(); }
-
-    public Marcador desapilar() { return pila.pop(); }
-
-    public int cantidadEnPila() { return pila.size(); }
-
-    @Override
-    public Boolean pilaVacia() {
-        return pila.isEmpty();
+    // Actualiza estadísticas de ambos equipos
+    private void actualizarEstadisticas() {
+        localSumarEstadisticas();
+        visitanteSumarEstadisticas();
     }
 
-    @Override
-    public String mostrarMarcador(Partido.Marcador marcador) {
-        return (marcador == null) ? "" : marcador.getMarcador();
-    }
+    private void localSumarEstadisticas() {
+        local.golesAFavor += golesLocal;
+        local.golesEnContra += golesVisitante;
+        local.partidosTerminados++;
 
-    @Override
-    public String equipoLocal() { return equipoLocal; }
-
-    @Override
-    public String equipoVisitante() { return equipoVisitante; }
-
-    @Override
-    public int golesLocal() {
-        Marcador m = pila.peek();
-        return (m == null) ? 0 : m.getGolesLocal();
-    }
-
-    @Override
-    public int golesVisitante() {
-        Marcador m = pila.peek();
-        return (m == null) ? 0 : m.getGolesVisitante();
-    }
-
-    @Override
-    public int maxGoles() {
-        return maxGolesPorEquipo;
-    }
-
-    public static final class Marcador {
-        private final String equipoLocal;
-        private final String equipoVisitante;
-        private final String division;
-        private final int golesLocal;
-        private final int golesVisitante;
-
-        public Marcador(String equipoLocal, String equipoVisitante, String division, int golesLocal, int golesVisitante) {
-            this.equipoLocal = equipoLocal;
-            this.equipoVisitante = equipoVisitante;
-            this.division = division;
-            this.golesLocal = golesLocal;
-            this.golesVisitante = golesVisitante;
+        if (golesLocal > golesVisitante) {
+            local.ganados++;
+            local.puntos += 3;
+        } else if (golesLocal == golesVisitante) {
+            local.empatados++;
+            local.puntos += 1;
+        } else {
+            local.perdidos++;
         }
+    }
 
-        public int getGolesLocal() { return golesLocal; }
-        public int getGolesVisitante() { return golesVisitante; }
-        public String getEquipoLocal() { return equipoLocal; }
-        public String getEquipoVisitante() { return equipoVisitante; }
-        public String getDivision() { return division; }
+    private void visitanteSumarEstadisticas() {
+        visitante.golesAFavor += golesVisitante;
+        visitante.golesEnContra += golesLocal;
+        visitante.partidosTerminados++;
 
-        public String getMarcador() {
-            return equipoLocal + " " + golesLocal + " - " + golesVisitante + " " + equipoVisitante;
+        if (golesVisitante > golesLocal) {
+            visitante.ganados++;
+            visitante.puntos += 3;
+        } else if (golesVisitante == golesLocal) {
+            visitante.empatados++;
+            visitante.puntos += 1;
+        } else {
+            visitante.perdidos++;
         }
+    }
 
-        @Override public String toString() { return getMarcador(); }
+    // Métodos de consulta
+    public String getMarcador() {
+        return local.getNombre() + " " + golesLocal + " - " + golesVisitante + " " + visitante.getNombre();
+    }
+
+    public boolean fueterminado() { return terminado; }
+    public int getGolesLocal() { return golesLocal; }
+    public int getGolesVisitante() { return golesVisitante; }
+    public Equipo getLocal() { return local; }
+    public Equipo getVisitante() { return visitante; }
+    public Division getDivision() { return division; }
+
+    // Historial global de partidos terminados
+    public static Partido ultimoEnHistorial() {
+        return historial.tope();
+    }
+
+    public static Partido desapilarHistorial() {
+        return historial.sacar();
+    }
+
+    public static int cantidadHistorial() {
+        return historial.cantElementos();
+    }
+
+    @Override
+    public int compareTo(Partido otro) {
+        // criterio: diferencia de goles
+        int diff1 = this.golesLocal - this.golesVisitante;
+        int diff2 = otro.golesLocal - otro.golesVisitante;
+        return Integer.compare(diff1, diff2);
+    }
+
+    @Override
+    public String toString() {
+        return getMarcador() + " (División: " + division.getNombre() + ")";
     }
 }
+
+

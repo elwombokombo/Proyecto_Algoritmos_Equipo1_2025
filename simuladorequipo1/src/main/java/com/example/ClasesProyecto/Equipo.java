@@ -11,13 +11,13 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     private TDAListaEnlazada<Jugador> jugadores;
     private CalendarioPartido calendario;
 
-    private int puntos;
-    private int partidosJugados;
-    private int ganados;
-    private int empatados;
-    private int perdidos;
-    private int golesAFavor;
-    private int golesEnContra;
+    protected int puntos;
+    protected int partidosTerminados;
+    protected int ganados;
+    protected int empatados;
+    protected int perdidos;
+    protected int golesAFavor;
+    protected int golesEnContra;
 
     public Equipo(String id, String nombre, Division division){
         this.id = id;
@@ -25,7 +25,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         this.divisionAsignada = division;
         this.jugadores = new TDAListaEnlazada<>();
         this.calendario = new CalendarioPartido<>();
-        this.partidosJugados = 0;
+        this.partidosTerminados = 0;
         this.ganados = 0;
         this.empatados = 0;
         this.perdidos = 0;
@@ -44,7 +44,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     
     public Division getDivision() { return divisionAsignada; }
     public int getPuntos() {return puntos; }
-    public int getPartidosJugados() { return partidosJugados; }
+    public int getPartidosTerminados() { return partidosTerminados; }
     public int getGanados() {return ganados; }
     public int getEmpatados() {return empatados; }
     public int getPerdidos() {return perdidos; }
