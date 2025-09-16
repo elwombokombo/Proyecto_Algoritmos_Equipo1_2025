@@ -43,7 +43,7 @@ public class Partido implements IPartido, Comparable<Partido>{
         actualizarEstadisticas();
 
         terminado = true;
-        historial.push(this);
+        division.registrarPartido(this);
     }
 
     // Actualiza estadísticas de ambos equipos
