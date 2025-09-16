@@ -1,7 +1,7 @@
 package com.example.ClasesProyecto;
 
 import com.example.Interfaces.IDivision;
-import com.example.lista.TDAPila;
+import com.example.lista.impl.PilaListaEnlazada;
 import com.example.lista.impl.TDAListaEnlazada;
 
 
@@ -9,7 +9,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
    // private TDAListaEnlazada<Equipo> listaEquipos = new TDAListaEnlazada<>();
     private String nombre;
     private int cantidadEquipos;
-    public TDAPila historialPartidos;
+    public PilaListaEnlazada<Partido> historialPartidos;
 
     public Division(String nombre, int cantidadEquipos){
         this.nombre = nombre;
@@ -56,10 +56,15 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
 
     return str.toString();
     }
-    
+
     @Override
-    public TDAPila mostrarHistorial(){
+    public PilaListaEnlazada<Partido> mostrarHistorial(){
         return historialPartidos;
+    }
+
+    @Override
+    public void registrarPartido(Partido partido){
+        historialPartidos.push(partido);
     }
 
 }

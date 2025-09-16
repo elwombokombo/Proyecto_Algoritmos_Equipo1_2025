@@ -1,6 +1,7 @@
 package com.example.Interfaces;
 import com.example.ClasesProyecto.Equipo;
-import com.example.lista.TDAPila;
+import com.example.ClasesProyecto.Partido;
+import com.example.lista.impl.PilaListaEnlazada;
 public interface IDivision {
     Equipo buscarEquipo(Equipo nombreEquipo);
 
@@ -12,5 +13,7 @@ public interface IDivision {
 
     String imprimirJugadores();
 
-    TDAPila mostrarHistorial();
+    PilaListaEnlazada<Partido> mostrarHistorial();
+
+    void registrarPartido(Partido partido);
 }
