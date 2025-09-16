@@ -1,13 +1,8 @@
 package com.example.ClasesProyecto;
 
-import com.example.Interfaces.IPartido;
-import com.example.lista.impl.TDAListaEnlazada;
-
 import java.util.Random;
 
-import com.example.lista.TDAPila;
-import com.example.lista.impl.ColaEnlazada;
-import com.example.lista.impl.PilaListaEnlazada;
+import com.example.Interfaces.IPartido;
 
 public class Partido implements IPartido, Comparable<Partido>{
     
@@ -18,8 +13,6 @@ public class Partido implements IPartido, Comparable<Partido>{
     private int golesLocal;
     private int golesVisitante;
     private boolean terminado;
-
-    private static PilaListaEnlazada<Partido> historial = new PilaListaEnlazada<>();
 
     private Random rnd = new Random();
 
@@ -111,7 +104,7 @@ public class Partido implements IPartido, Comparable<Partido>{
     @Override
     public Division getDivision() { return division; }
 
-    @Override
+    /*@Override
     // Historial global de partidos terminados
     public Partido ultimoEnHistorial() {
         return historial.tope();
@@ -123,7 +116,8 @@ public class Partido implements IPartido, Comparable<Partido>{
     @Override
     public int cantidadHistorial() {
         return historial.cantElementos();
-    }
+    }*/
+   
 
     @Override
     public int compareTo(Partido otro) {
