@@ -1,13 +1,13 @@
 package com.example.Interfaces;
 
 import com.example.ClasesProyecto.Equipo;
-import com.example.lista.impl.TDAListaEnlazada;
 
 public interface IJugador {
     String getNombre();
     int getEdad();
     String getPosicion();
-    String getId();
+    int getId();
+    
 
     int getGolesConvertidos();
     int getTarjetasRecibidas();
@@ -22,6 +22,6 @@ public interface IJugador {
     void agregaSancion();
     void cumpleSancion();
 
-    TDAListaEnlazada<String> playerStats();
+    String playerStats();
 }
 

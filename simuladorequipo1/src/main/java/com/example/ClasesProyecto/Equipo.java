@@ -63,9 +63,14 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     }
 
     @Override
-    public Jugador borrarJugador(String idj) {//hacer cuando este jugador
-        return jugadores.eliminar(new Jugador(idj, "", 0, ""));
+    public Jugador borrarJugador(Jugador jugador) {//hacer cuando este jugador
+        return jugadores.eliminar(jugador);
     }
+
+    //jugador lewandoski= new Jugador (...)
+    //...
+    //Barcelona.borrarJugador(lewandoski)
+
 
     @Override
     public Boolean agregarJugador(Jugador nuevo) { 
@@ -80,9 +85,10 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     }
 
     @Override
-    public Jugador buscarJugador(String idj){
-        return jugadores.buscar(new Jugador(idj, "", 0, ""));
+    public Jugador buscarJugador(Jugador jugador){
+        return jugadores.buscar(jugador);   
     }
+   
 
     @Override
     public int cantidadDeJugadores(){
@@ -104,5 +110,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     
     //Logica con los partidos, deberia hacer una clase que separe lo que es organizar los partidos
     //y en esta solo tener en cuenta las estadisticas
+
+    
 
 }

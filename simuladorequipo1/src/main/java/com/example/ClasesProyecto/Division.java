@@ -13,6 +13,14 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
         this.nombre = nombre;
         this. cantidadEquipos = cantidadEquipos;
     }
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public int getCantidadEquipos(){
+        return this.cantidadEquipos;
+    }
+
 
     @Override
     public Equipo buscarEquipo(Equipo nombreEquipo) {

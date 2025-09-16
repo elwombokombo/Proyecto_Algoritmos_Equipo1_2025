@@ -1,13 +1,12 @@
 package com.example.ClasesProyecto;
 
 import com.example.Interfaces.IJugador;
-import com.example.lista.TDALista;
-import com.example.lista.impl.TDAListaEnlazada;
 
 public class Jugador implements IJugador, Comparable<Jugador> {
 
-    TDAListaEnlazada<String> s = new TDAListaEnlazada<>(); 
-    private String id;
+    //TDAListaEnlazada<String> s = new TDAListaEnlazada<>(); 
+    public static int contadorId = 0;
+    private Integer id;
     private String nombre;
     private int edad;
     private String posicion;
@@ -18,8 +17,8 @@ public class Jugador implements IJugador, Comparable<Jugador> {
     private int sancionesPendientes;
     private Equipo equipo;
 
-    public Jugador(String id, String nombre, int edad, String posicion) {
-        this.id = id;
+    public Jugador(String nombre, int edad, String posicion) {
+        this.id = ++contadorId;
         this.nombre = nombre;
         this.edad = edad;
         this.posicion = posicion;
@@ -39,7 +38,7 @@ public class Jugador implements IJugador, Comparable<Jugador> {
     @Override public int getPartidosDisputados() { return partidosDisputados; }
 
     @Override 
-    public String getId(){
+    public int getId(){
         return id;
     }
 
@@ -73,7 +72,7 @@ public class Jugador implements IJugador, Comparable<Jugador> {
     }
 
 
-    @Override
+    /*@Override
     public TDAListaEnlazada<String> playerStats() {
 
         s.insertar("Jugador: " + nombre);
@@ -82,17 +81,25 @@ public class Jugador implements IJugador, Comparable<Jugador> {
         s.insertar("Goles: " + golesConvertidos);
         s.insertar("Tarjetas: " + tarjetasRecibidas);
         return s;
+    }*/
+
+    @Override
+    public String playerStats(){
+        StringBuilder str = new StringBuilder();
+        str.append("Jugador: " + nombre + "\n");
+        str.append("Posicion: " + posicion + "\n");
+        str.append("Edad: " + edad + "\n");
+        str.append("PJ: " + partidosDisputados + "\n");
+        str.append("Goles: " + golesConvertidos + "\n");
+        str.append("Tarjetas: " + tarjetasRecibidas + "\n");
+        return str.toString();
     }
    
-    @Override
-    public String toString() {
-        return nombre + " (" + posicion + ") PJ: " + partidosDisputados +
-               " G: " + golesConvertidos + " T: " + tarjetasRecibidas + "S: " + sancionesPendientes;
-    }
-
-
-    @Override
+    
     public int compareTo(Jugador otro) {
-        return this.id.compareTo(otro.id);
+        return this.id.compareTo(otro.getId());
     }
+
+    
+    
 }

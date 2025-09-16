@@ -6,9 +6,9 @@ import com.example.ClasesProyecto.Jugador;
 public interface IEquipo {
     int compareTo(Equipo otro);
     Boolean estaVacio ();
-    Jugador borrarJugador (String idj);
+    Jugador borrarJugador (Jugador idj);
     Boolean agregarJugador (Jugador jugador);
-    Jugador buscarJugador (String idj);
+    Jugador buscarJugador (Jugador idj);
     int cantidadDeJugadores();
     String mostrarJugadores();
     String getId();
