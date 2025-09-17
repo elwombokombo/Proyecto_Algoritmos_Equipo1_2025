@@ -16,4 +16,6 @@ public interface IDivision {
     PilaListaEnlazada<Partido> mostrarHistorial();
 
     void registrarPartido(Partido partido);
+
+    void mostrarTablaDePosiciones();
 }

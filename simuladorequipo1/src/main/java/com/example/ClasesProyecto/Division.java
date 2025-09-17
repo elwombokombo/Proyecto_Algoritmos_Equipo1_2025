@@ -11,6 +11,8 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
     private int cantidadEquipos;
     public PilaListaEnlazada<Partido> historialPartidos;
 
+    private final TablaDePosiciones tabla = new TablaDePosiciones(this);
+
     public Division(String nombre, int cantidadEquipos){
         this.nombre = nombre;
         this. cantidadEquipos = cantidadEquipos;
@@ -93,6 +95,9 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
         return encontrados;
     }
 
-
+    @Override
+    public void mostrarTablaDePosiciones(){
+        System.out.println(tabla.imprimirTabla());
+    }
 
 }
