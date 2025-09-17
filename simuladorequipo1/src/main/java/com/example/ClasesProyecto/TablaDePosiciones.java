@@ -18,22 +18,24 @@ public class TablaDePosiciones {
         if (local == null || visitante == null) return;
         if (local.compareTo(visitante) == 0) return; // no puede jugar contra sí mismo
 
-        local.golesAFavor     += golesLocal;            //Puntos para local y visitante
-        local.golesEnContra   += golesVisitante;
+        local.golesAFavor += golesLocal;            //Puntos para local y visitante
+        local.golesEnContra += golesVisitante;
         local.partidosTerminados++;
 
-        visitante.golesAFavor   += golesVisitante;
+        visitante.golesAFavor += golesVisitante;
         visitante.golesEnContra += golesLocal;
         visitante.partidosTerminados++;
 
 
-        if (golesLocal > golesVisitante) {              //Goles para local y visitante
-            local.ganados++;     local.puntos += 3;
-            visitante.perdidos++;
-        } else if (golesLocal < golesVisitante) {
+        if (golesLocal > golesVisitante) {              //Suma los partidos ganados por el local
+            local.ganados++;     local.puntos += 3;     //+3 puntos
+            visitante.perdidos++;                       //Suma partido perdido a visitante
+        }
+        else if (golesLocal < golesVisitante) {         //Idem
             visitante.ganados++; visitante.puntos += 3;
             local.perdidos++;
-        } else {
+        }
+        else {                                          //Caso de empate
             local.empatados++;     local.puntos++;
             visitante.empatados++; visitante.puntos++;
         }
