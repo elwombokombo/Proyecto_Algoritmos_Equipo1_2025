@@ -5,20 +5,18 @@ import com.example.lista.impl.Conjunto;
 import com.example.lista.impl.PilaListaEnlazada;
 import com.example.lista.impl.TDAListaEnlazada;
 
-public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
+public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Comparable<Division> {
    // private TDAListaEnlazada<Equipo> listaEquipos = new TDAListaEnlazada<>();
     private String nombre;
     private int cantidadEquipos;
     public PilaListaEnlazada<Partido> historialPartidos;
-
-    private final TablaDePosiciones tabla = new TablaDePosiciones(this);
 
     public Division(String nombre, int cantidadEquipos){
         this.nombre = nombre;
         this. cantidadEquipos = cantidadEquipos;
         this.historialPartidos = new PilaListaEnlazada<>();
     }
-    
+
     public String getNombre(){
         return this.nombre;
     }
@@ -98,8 +96,11 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
     }
 
     @Override
-    public void mostrarTablaDePosiciones(){
-        System.out.println(tabla.imprimirTabla());
+    public int compareTo(Division division) {
+        return this.nombre.compareTo(division.getNombre());
     }
+
+
+
 
 }
