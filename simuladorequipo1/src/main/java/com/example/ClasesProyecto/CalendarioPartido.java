@@ -3,7 +3,7 @@ package com.example.ClasesProyecto;
 import com.example.lista.impl.ColaEnlazada;
 import com.example.lista.impl.PilaListaEnlazada;
 
-public class CalendarioPartido <Partido extends Comparable<Partido>> {
+public class CalendarioPartido implements Comparable<Partido> {
     private ColaEnlazada<Partido> proximosPartidos;
     private PilaListaEnlazada<Partido> historialPartidos;
 
@@ -26,5 +26,11 @@ public class CalendarioPartido <Partido extends Comparable<Partido>> {
 
     public Partido sacarUltimoPartido(){
         return historialPartidos.sacar();
+    }
+
+    @Override
+    public int compareTo(Partido o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 }

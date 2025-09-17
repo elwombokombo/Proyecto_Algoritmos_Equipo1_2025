@@ -18,7 +18,7 @@ public class Jugador implements IJugador, Comparable<Jugador> {
     private Equipo equipo;
 
     public Jugador(String nombre, int edad, String posicion) {
-        this.id = ++contadorId;
+        this.id = ++contadorId; //Cada jugador tiene una id unica
         this.nombre = nombre;
         this.edad = edad;
         this.posicion = posicion;
@@ -26,37 +26,33 @@ public class Jugador implements IJugador, Comparable<Jugador> {
         this.tarjetasRecibidas = 0;
         this.partidosDisputados = 0;
         this.sancionesPendientes = 0;
-        this.equipo = null;
+        this.equipo = null; //arranca sin equipo
     }
 
 
-    @Override public String getNombre() { return nombre; }
-    @Override public int getEdad() { return edad; }
-    @Override public String getPosicion() { return posicion; }
-    @Override public int getGolesConvertidos() { return golesConvertidos; }
-    @Override public int getTarjetasRecibidas() { return tarjetasRecibidas; }
-    @Override public int getPartidosDisputados() { return partidosDisputados; }
-
-    @Override 
+    public String getNombre() { return nombre; }
+    public int getEdad() { return edad; }
+    public String getPosicion() { return posicion; }
+    public int getGolesConvertidos() { return golesConvertidos; }
+    public int getTarjetasRecibidas() { return tarjetasRecibidas; }
+    public int getPartidosDisputados() { return partidosDisputados; }
     public int getId(){
         return id;
     }
-
-    @Override
     public int getSancionesPendientes(){
         return sancionesPendientes;
+    }
+
+    public Equipo getEquipo(){
+            return equipo;
     }
 
     @Override
     public void asignarEquipo(Equipo equipo) {
         this.equipo = equipo;   
     }
-    @Override
-    public Equipo getEquipo(){
-        return equipo;
-    }
 
-
+    
     @Override public void sumarGol()         { golesConvertidos++; }
     @Override public void sumarTarjeta()     { tarjetasRecibidas++; }
     @Override public void registrarPartido() { partidosDisputados++; }
@@ -95,11 +91,14 @@ public class Jugador implements IJugador, Comparable<Jugador> {
         return str.toString();
     }
    
-    
+    @Override
     public int compareTo(Jugador otro) {
         return this.id.compareTo(otro.getId());
     }
 
-    
+    @Override
+    public String toString (){
+        return nombre + " ("+ posicion + ", " + edad + " años)"; 
+    }
     
 }

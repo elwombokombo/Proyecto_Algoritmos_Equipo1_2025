@@ -9,7 +9,7 @@ public interface IPartido {
     void localSumarEstadisticas();
     void visitanteSumarEstadisticas();
     String getMarcador();
-    boolean fueTerminado();
+    boolean terminado();
     int getGolesLocal();
     int getGolesVisitante();
     Equipo getLocal();

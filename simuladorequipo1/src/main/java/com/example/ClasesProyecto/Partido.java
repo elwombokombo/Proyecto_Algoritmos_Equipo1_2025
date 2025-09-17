@@ -21,7 +21,6 @@ public class Partido implements IPartido, Comparable<Partido>{
         this.local = local;
         this.visitante = visitante;
         this.division = division;
-        this.rnd = rnd; 
         this.golesLocal = 0;
         this.golesVisitante = 0;
         this.terminado = false;
@@ -88,7 +87,7 @@ public class Partido implements IPartido, Comparable<Partido>{
     }
 
     @Override
-    public boolean fueTerminado() { return terminado; }
+    public boolean terminado() { return terminado; }
 
     @Override
     public int getGolesLocal() { return golesLocal; }
@@ -138,7 +137,7 @@ public class Partido implements IPartido, Comparable<Partido>{
         conjunto.insertarSinRepetidos(local);
         conjunto.insertarSinRepetidos(visitante);
         return conjunto;
-}
+    }
 
 }
 

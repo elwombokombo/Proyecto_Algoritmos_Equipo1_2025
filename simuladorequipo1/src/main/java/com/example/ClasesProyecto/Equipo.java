@@ -34,14 +34,13 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         this.puntos = 0;
     }
 
+
     public String getId(){
         return id;
     }
-
     public String getNombre(){
         return nombre;
     }
-    
     public Division getDivision() { return divisionAsignada; }
     public int getPuntos() {return puntos; }
     public int getPartidosTerminados() { return partidosTerminados; }
@@ -51,11 +50,6 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     public int getGolesAFavor() {return golesAFavor; }
     public int getGolesEnContra() {return golesEnContra; }
     public int getDiferenciaDeGol() {return golesAFavor - golesEnContra;}
-    
-    @Override
-    public int compareTo(Equipo equipo){
-        return this.id.compareTo(equipo.getId());
-    }
 
     @Override
     public Boolean estaVacio() {
@@ -63,14 +57,13 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     }
 
     @Override
-    public Jugador borrarJugador(Jugador jugador) {//hacer cuando este jugador
+    public Jugador borrarJugador(Jugador jugador) {
         return jugadores.eliminar(jugador);
     }
 
     //jugador lewandoski= new Jugador (...)
     //...
     //Barcelona.borrarJugador(lewandoski)
-
 
     @Override
     public Boolean agregarJugador(Jugador nuevo) { 
@@ -83,6 +76,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         }
         return agregado;
     }
+
 
     @Override
     public Jugador buscarJugador(Jugador jugador){
@@ -108,9 +102,17 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         return str.toString();
     }
     
-    //Logica con los partidos, deberia hacer una clase que separe lo que es organizar los partidos
-    //y en esta solo tener en cuenta las estadisticas
 
-    
+    // metodo para la tabla de posiciones
+    @Override
+    public int compareTo (Equipo otro){
+        if (this.puntos != otro.getPuntos()){
+            return Integer.compare(this.puntos, otro.getPuntos());
+        }
+        if (this.getDiferenciaDeGol() != otro.getDiferenciaDeGol()){
+            return Integer.compare(this.getDiferenciaDeGol(), otro.getDiferenciaDeGol());
+        }
+        return Integer.compare(this.golesAFavor, otro.getGolesAFavor());
+    }
 
 }
