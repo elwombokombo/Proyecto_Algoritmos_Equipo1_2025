@@ -6,9 +6,9 @@ public class LigaUcu implements Comparable<Division> {
     private String nombre;
     private TDAListaEnlazada<Division> divisiones;
     
-    public Liga (String nombre) {
+    public LigaUcu (String nombre) {
         this.nombre = nombre;
-        this.divisiones = new TDAListaEnlazada <>()
+        this.divisiones = new TDAListaEnlazada<>();
     }
     
     @Override
