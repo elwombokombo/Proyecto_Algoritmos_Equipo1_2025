@@ -1,9 +1,6 @@
 package com.example.ClasesProyecto;
 
 import com.example.lista.impl.TDAListaEnlazada;
-import com.example.ClasesProyecto.Equipo;
-import com.example.ClasesProyecto.Division;
-import com.example.ClasesProyecto.Partido;
 
 public class TablaDePosiciones {
 
@@ -16,15 +13,12 @@ public class TablaDePosiciones {
     public void registrarPartido(Equipo local,
                                  Equipo visitante,
                                  int golesLocal,
-                                 int golesVisitante,
-                                 TDAListaEnlazada<Jugador> goleadoresLocal,
-                                 TDAListaEnlazada<Jugador> goleadoresVisitante) {
-
+                                 int golesVisitante) {
 
         if (local == null || visitante == null) return;
-        if (local.compareTo(visitante) == 0) return;
+        if (local.compareTo(visitante) == 0) return; // no puede jugar contra sí mismo
 
-        local.golesAFavor     += golesLocal;
+        local.golesAFavor     += golesLocal;            //Puntos para local y visitante
         local.golesEnContra   += golesVisitante;
         local.partidosTerminados++;
 
@@ -32,29 +26,16 @@ public class TablaDePosiciones {
         visitante.golesEnContra += golesLocal;
         visitante.partidosTerminados++;
 
-        if (golesLocal > golesVisitante) {
+
+        if (golesLocal > golesVisitante) {              //Goles para local y visitante
             local.ganados++;     local.puntos += 3;
             visitante.perdidos++;
         } else if (golesLocal < golesVisitante) {
             visitante.ganados++; visitante.puntos += 3;
             local.perdidos++;
         } else {
-
-            local.empatados++;     local.puntos += 1;
-            visitante.empatados++; visitante.puntos += 1;
-        }
-
-        if (goleadoresLocal != null) {
-            for (int i = 0; i < goleadoresLocal.cantElementos(); i++) {
-                Jugador j = goleadoresLocal.obtenerPorIndice(i);
-                if (j != null) j.sumarGol();
-            }
-        }
-        if (goleadoresVisitante != null) {
-            for (int i = 0; i < goleadoresVisitante.cantElementos(); i++) {
-                Jugador j = goleadoresVisitante.obtenerPorIndice(i);
-                if (j != null) j.sumarGol();
-            }
+            local.empatados++;     local.puntos++;
+            visitante.empatados++; visitante.puntos++;
         }
     }
 
@@ -84,11 +65,10 @@ public class TablaDePosiciones {
         return sb.toString();
     }
 
+    //Ordena los equipos
     private TDAListaEnlazada<Equipo> ordenarEquiposSegunReglas() {
-
         TDAListaEnlazada<Equipo> trabajo = copiarEquipos();
         TDAListaEnlazada<Equipo> ranking = new TDAListaEnlazada<>();
-
         while (!trabajo.esVacia()) {
             Equipo mejor = null;
             for (int i = 0; i < trabajo.cantElementos(); i++) {
@@ -96,19 +76,21 @@ public class TablaDePosiciones {
                 if (esMejor(cand, mejor)) mejor = cand;
             }
             ranking.insertar(mejor);
-            trabajo.eliminar(mejor); // usa compareTo(id) de Equipo
+            trabajo.eliminar(mejor);
         }
         return ranking;
     }
-
+    //Reglas de desempate
     private boolean esMejor(Equipo a, Equipo b) {
-        if (b == null) return true; // a va primero si no hay comparando
+
+        if (b == null)
+            return true;
 
         if (a.getPuntos() != b.getPuntos())
             return a.getPuntos() > b.getPuntos();
 
-        int dga = a.getDiferenciaDeGol();
-        int dgb = b.getDiferenciaDeGol();
+        int dga = a.getDiferenciaDeGol(), dgb = b.getDiferenciaDeGol();
+
         if (dga != dgb)
             return dga > dgb;
 
@@ -117,7 +99,6 @@ public class TablaDePosiciones {
 
         if (a.getGolesEnContra() != b.getGolesEnContra())
             return a.getGolesEnContra() < b.getGolesEnContra();
-
         return a.getNombre().compareToIgnoreCase(b.getNombre()) < 0;
     }
 
