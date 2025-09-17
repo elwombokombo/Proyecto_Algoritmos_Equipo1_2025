@@ -38,15 +38,15 @@ public class Liga {
     //6
     Equipo Palmeiras = new Equipo ("PLM", "Palmeiras", division1);
     //7
-    Equipo Cerrito = new Equipo ("CRR", "Racing", division1);
+    Equipo Cerrito = new Equipo ("CRR", "Cerrito", division1);
     //8
-    Equipo Rocha = new Equipo ("RCG", "Racing", division1);
+    Equipo Rocha = new Equipo ("RCG", "Rocha", division1);
     //9
-    Equipo Cerro = new Equipo ("CER", "Racing", division2);
+    Equipo Cerro = new Equipo ("CER", "Cerro", division2);
     //10
-    Equipo Rentistas = new Equipo ("REN", "Racing", division2);
+    Equipo Rentistas = new Equipo ("REN", "Rentistas", division2);
     //11
-    Equipo Tabaré = new Equipo ("TAB", "Racing", division2);
+    Equipo Tabaré = new Equipo ("TAB", "Tabaré", division2);
     //12
     Equipo Barcelona = new Equipo ("BAR", "Barcelona", division1);
     //13

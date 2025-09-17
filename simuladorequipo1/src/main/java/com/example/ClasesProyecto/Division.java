@@ -14,7 +14,9 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
     public Division(String nombre, int cantidadEquipos){
         this.nombre = nombre;
         this. cantidadEquipos = cantidadEquipos;
+        this.historialPartidos = new PilaListaEnlazada<>();
     }
+    
     public String getNombre(){
         return this.nombre;
     }
