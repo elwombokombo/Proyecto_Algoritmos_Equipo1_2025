@@ -24,7 +24,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         this.nombre = nombre;
         this.divisionAsignada = division;
         this.jugadores = new TDAListaEnlazada<>();
-        this.calendario = new CalendarioPartido<>();
+        //this.calendario = new CalendarioPartido<>();
         this.partidosTerminados = 0;
         this.ganados = 0;
         this.empatados = 0;
