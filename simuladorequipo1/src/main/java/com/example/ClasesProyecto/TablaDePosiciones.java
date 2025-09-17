@@ -83,25 +83,25 @@ public class TablaDePosiciones {
         return ranking;
     }
     //Reglas de desempate
-    private boolean esMejor(Equipo a, Equipo b) {
+    private boolean esMejor(Equipo locatario, Equipo visita) {
 
-        if (b == null)
+        if (visita == null)
             return true;
 
-        if (a.getPuntos() != b.getPuntos())
-            return a.getPuntos() > b.getPuntos();
+        if (locatario.getPuntos() != visita.getPuntos())
+            return locatario.getPuntos() > visita.getPuntos();
 
-        int dga = a.getDiferenciaDeGol(), dgb = b.getDiferenciaDeGol();
+        int difGollocal = locatario.getDiferenciaDeGol(), difgolVisita = visita.getDiferenciaDeGol();
 
-        if (dga != dgb)
-            return dga > dgb;
+        if (difGollocal != difgolVisita)
+            return difGollocal > difgolVisita;
 
-        if (a.getGolesAFavor() != b.getGolesAFavor())
-            return a.getGolesAFavor() > b.getGolesAFavor();
+        if (locatario.getGolesAFavor() != visita.getGolesAFavor())
+            return locatario.getGolesAFavor() > visita.getGolesAFavor();
 
-        if (a.getGolesEnContra() != b.getGolesEnContra())
-            return a.getGolesEnContra() < b.getGolesEnContra();
-        return a.getNombre().compareToIgnoreCase(b.getNombre()) < 0;
+        if (locatario.getGolesEnContra() != visita.getGolesEnContra())
+            return locatario.getGolesEnContra() < visita.getGolesEnContra();
+        return locatario.getNombre().compareToIgnoreCase(visita.getNombre()) < 0;
     }
 
     private TDAListaEnlazada<Equipo> copiarEquipos() {
