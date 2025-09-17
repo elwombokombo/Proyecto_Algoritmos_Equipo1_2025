@@ -5,7 +5,7 @@ import com.example.lista.impl.Conjunto;
 import com.example.lista.impl.PilaListaEnlazada;
 import com.example.lista.impl.TDAListaEnlazada;
 
-public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
+public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Comparable<Division> {
    // private TDAListaEnlazada<Equipo> listaEquipos = new TDAListaEnlazada<>();
     private String nombre;
     private int cantidadEquipos;
@@ -93,6 +93,11 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
         }
 
         return encontrados;
+    }
+
+    @Override
+    public int compareTo(Division o) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 
