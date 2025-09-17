@@ -2,6 +2,8 @@ package com.example.ClasesProyecto;
 
 import com.example.ClasesProyecto.Liga;
 import java.util.Scanner;
+import com.example.ClasesProyecto.LigaPrecargada;
+
 public class Consola {
 
     private Scanner scanner;
@@ -18,7 +20,9 @@ public class Consola {
                 System.out.println("¿Cómo quieres que se llame la liga?");
                 String nombreLiga=scanner.nextLine();scanner.nextLine();
                 Liga nuevaLiga= new Liga(nombreLiga);
-                //Se crea la division
+                
+                //Comienza la secuencia de creación de objetos
+                //Se crea la división
                 System.out.println("¿Cuántas divisiones quieres que tenga (Ingrese dígitos)?");
                 int cantDivisiones=scanner.nextInt();scanner.nextLine();
                 for (int i=0;i < cantDivisiones;i++){
@@ -28,6 +32,8 @@ public class Consola {
                     int cantEquipos = scanner.nextInt();scanner.nextLine();
                     Division division = new Division(nombreDivision,cantEquipos);
                     nuevaLiga.agregarDivision(division);
+
+                    //Se agregan los equipos a la división
                     for (int x=0;x < cantEquipos;x++){
                         System.out.println("Ingresa el nombre de un equipo");
                         String nombreEquipo=scanner.nextLine();scanner.nextLine();
@@ -36,14 +42,30 @@ public class Consola {
                         Equipo nuevoEquipo = new Equipo(idEquipo, nombreLiga, division);
                         division.agregarEquipo(nuevoEquipo);
 
+                        //Se agregan los jugadores al equipo
+                        System.out.println("¿Cuántos jugadores le gustaría agregar al equipo? (Digite un número)");
+                        int cantJugadores = scanner.nextInt();scanner.nextLine();
+                        for (int y=0; y<cantJugadores;y++){
+                            System.out.println("A continuación crearemos los jugadores");
+                            System.out.println("¿Como quiere que se llame este jugador?");
+                            String nombreJugador=scanner.nextLine();scanner.nextLine();
+                            System.out.println("¿Qué edad tiene? (Digite un número)");
+                            int edadJugador=scanner.nextInt();scanner.nextLine();
+                            System.out.println("¿Cuál es su posición?");
+                            String posicionJugador=scanner.nextLine();scanner.nextLine();
+                            Jugador jugador = new Jugador(nombreJugador, edadJugador, posicionJugador);
+                            nuevoEquipo.agregarJugador(jugador);
+                        }                  
                     }
                 }
+            } 
                 
                 
                 
                 
-            }
+            
             else if (entrada==2) {
+                Liga liga = LigaPrecargada.crearLiga(); 
                 System.out.println("Elija una de estás siguientes opciones: ");
                 System.out.println("1- Agregar equipo.");
                 System.out.println("2- Agregar jugador.");
@@ -55,13 +77,20 @@ public class Consola {
                 System.out.println("8- Mostrar jugador.");
                 System.out.println("9- Consultar proximos partidos.");
                 System.out.println("10- Consultar partidos jugados.");
+                System.out.println("11- Crear equipo.");
+                System.out.println("12- Crear jugador.");
                 int entrada2 = scanner.nextInt();
                 scanner.nextLine();
                 
                 switch (entrada2) {
                     case 1:
-                        System.out.println("Ingrese el nombre de la division:");
-                        liga.agregarEquipoADivision(nombreDivision = scanner.nextLine()) 
+                        System.out.println("Ingrese el id: ");
+                        String id = scanner.nextLine();
+                        System.out.println("Ingrese el nombre del equipo: ");
+                        String nombreEq = scanner.nextLine();
+                        System.out.println("Ingrese la division: ");
+                        String div = scanner.nextLine();
+                        liga.agregarEquipoADivision(id, nombreEq, div);
                         
                         break;
                     case 2:
@@ -91,6 +120,12 @@ public class Consola {
                     case 10:
                         
                         break;
+                    case 11:
+                        
+                        break;
+                    case 12:
+                        
+                        break;
                     default:
                         throw new AssertionError();
                 }
@@ -103,4 +138,5 @@ public class Consola {
         }
     }
 }
+
 
