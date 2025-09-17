@@ -1,9 +1,9 @@
 package com.example.ClasesProyecto;
 
 import com.example.Interfaces.IDivision;
+import com.example.lista.impl.Conjunto;
 import com.example.lista.impl.PilaListaEnlazada;
 import com.example.lista.impl.TDAListaEnlazada;
-
 
 public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
    // private TDAListaEnlazada<Equipo> listaEquipos = new TDAListaEnlazada<>();
@@ -66,5 +66,33 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision {
     public void registrarPartido(Partido partido){
         historialPartidos.push(partido);
     }
+
+    public boolean yaJugaron(Equipo e1, Equipo e2) {
+        Conjunto<Equipo> buscados = new Conjunto<>();
+        buscados.insertarSinRepetidos(e1);
+        buscados.insertarSinRepetidos(e2);
+
+        PilaListaEnlazada<Partido> aux = new PilaListaEnlazada<>();
+        boolean encontrados = false;
+
+        while (!historialPartidos.esVacia()) {
+            Partido p = historialPartidos.sacar();
+            aux.push(p);
+
+            // comparamos conjuntos
+            if (p.getEquiposComoConjunto().equals(buscados)) {
+                encontrados = true;
+            }
+        }
+
+        // restauramos la pila
+        while (!aux.esVacia()) {
+            historialPartidos.push(aux.sacar());
+        }
+
+        return encontrados;
+    }
+
+
 
 }

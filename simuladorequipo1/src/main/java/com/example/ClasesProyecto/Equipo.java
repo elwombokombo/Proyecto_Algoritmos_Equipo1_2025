@@ -52,7 +52,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
     public int getGolesEnContra() {return golesEnContra; }
     public int getDiferenciaDeGol() {return golesAFavor - golesEnContra;}
     
-
+    @Override
     public int compareTo(Equipo equipo){
         return this.id.compareTo(equipo.getId());
     }

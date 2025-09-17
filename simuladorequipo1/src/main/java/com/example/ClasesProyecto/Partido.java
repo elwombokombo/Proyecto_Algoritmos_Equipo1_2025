@@ -3,6 +3,7 @@ package com.example.ClasesProyecto;
 import java.util.Random;
 
 import com.example.Interfaces.IPartido;
+import com.example.lista.impl.Conjunto;
 
 public class Partido implements IPartido, Comparable<Partido>{
     
@@ -131,6 +132,13 @@ public class Partido implements IPartido, Comparable<Partido>{
     public String toString() {
         return getMarcador() + " (División: " + division.getNombre() + ")";
     }
+
+    public Conjunto<Equipo> getEquiposComoConjunto() {
+        Conjunto<Equipo> conjunto = new Conjunto<>();
+        conjunto.insertarSinRepetidos(local);
+        conjunto.insertarSinRepetidos(visitante);
+        return conjunto;
+}
 
 }
 

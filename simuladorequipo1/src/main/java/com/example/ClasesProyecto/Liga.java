@@ -166,12 +166,26 @@ public class Liga {
 
 
     //Se crean los partidos:
-        
+    public void programarPartidos(Division division) {
+        int cantidadEquipos = division.cantElementos(); //nos dice la cantidad de equipos
 
+        for (int i = 0; i < cantidadEquipos; i++) {
+            Equipo local = division.obtenerPorIndice(i);//recorro la lista de equipos
 
-        
+            for (int j = i + 1; j < cantidadEquipos; j++) {
+                Equipo visitante = division.obtenerPorIndice(j); //agarro el siguiente, la idea es juntar pares
 
+                // chequeamos si ya jugaron
+                if (!division.yaJugaron(local, visitante)) { //Si no jugaron, arma el partido
+                    Partido partido = new Partido(local, visitante, division);
+                    division.registrarPartido(partido);
+                }
+            }
+        }
     }
+
+        
+}
 
  
     
