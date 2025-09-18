@@ -1,8 +1,8 @@
 package com.example.ClasesProyecto;
 
-import com.example.ClasesProyecto.Liga;
 import java.util.Scanner;
-import com.example.ClasesProyecto.LigaPrecargada;
+
+import com.example.lista.impl.TDAListaEnlazada;
 
 public class Consola {
 
@@ -58,6 +58,16 @@ public class Consola {
                         }                  
                     }
                 }
+
+                /*Ya creada la liga se autogeneran los partidos*/
+                System.out.println("Los partidos serán autogenerados");
+                Division divisionActual = nuevaLiga.divisiones.obtenerPorIndice(0);
+                int contadorDivisiones = 0;
+                while (divisionActual!=null) {
+                    nuevaLiga.programarPartidos(divisionActual);
+                    contadorDivisiones +=1;
+                    divisionActual = nuevaLiga.divisiones.obtenerPorIndice(contadorDivisiones);
+                }
             } 
                 
                 
@@ -90,10 +100,24 @@ public class Consola {
                         String nombreEq = scanner.nextLine();
                         System.out.println("Ingrese la division: ");
                         String div = scanner.nextLine();
-                        liga.agregarEquipoADivision(id, nombreEq, div);
+                        Division division = liga.buscarDivision(div);
+                        Equipo equipo = new Equipo(id, nombreEq, division);
+                        liga.agregarEquipoADivision(division, equipo);
                         
                         break;
                     case 2:
+                        System.out.println("Ingrese el nombre del jugador: ");
+                        String nombre = scanner.nextLine();scanner.nextLine();
+                        System.out.println("Ingrese la edad: ");
+                        int edad = scanner.nextInt();
+                        System.out.println("Ingrese la posicion: ");
+                        String posicion = scanner.nextLine();
+                        System.out.println("Ingrese el equipo: ");
+                        String equipoJ = scanner.nextLine();
+                        Equipo equipoJ = liga.buscarEquipo(equipoJ);
+                        Jugador jugador = new Jugador(nombre, edad, posicion);
+                        liga.agregarJugadorAEquipo(equipoJ, jugador);
+
                         
                         break;
                     case 3:

@@ -4,7 +4,7 @@ import com.example.lista.impl.TDAListaEnlazada;
 
 public class Liga {
     private String nombre;
-    private TDAListaEnlazada<Division> divisiones;
+    protected TDAListaEnlazada<Division> divisiones;
 
     public Liga(String nombre) {
         this.nombre = nombre;
@@ -26,6 +26,15 @@ public class Liga {
             }
         }
         return null;
+    }
+
+    public Equipo buscarEquipo(String nombre){
+        for (int i = 0; i < divisiones.cantElementos(); i++) {
+            Division d = divisiones.obtenerPorIndice(i);
+            for (int j = 0; j < d.cantElementos(); j++) {
+                Equipo e = 
+            }
+        }
     }
 
     public String listarDivisiones() {
