@@ -120,16 +120,19 @@ public class Consola {
                         case 3:
                             System.out.println("Ingrese el nombre del equipo a buscar: ");
                             String nombreEq3 = scanner.nextLine();scanner.nextLine();
-                            Equipo equipoBuscado3 = nuevaLiga.buscarEquipo(nombreEq);
+                            Equipo equipoBuscado3 = nuevaLiga.buscarEquipo(nombreEq3);
 
-                            System.out.println("Estas son las estadísticas del jugador: ");
+                            System.out.println("Estas son las estadísticas del equipo: ");
                             System.out.println("Nombre: " + equipoBuscado3.getNombre());
                             System.out.println("Division: " + equipoBuscado3.getDivision().getNombre());
                             System.out.println("Puntos obtenidos: " + equipoBuscado3.getPuntos());
-                            System.out.println("Goles convertidos: " + jugBuscado.getGolesConvertidos());
-                            System.out.println("Tarjetas recibidas: " + jugBuscado.getTarjetasRecibidas());
-                            System.out.println("Partidos disputados: " + jugBuscado.getPartidosDisputados());
-                            System.out.println("ID: " + jugBuscado.getId());
+                            System.out.println("Partidos terminados: " + equipoBuscado3.getPartidosTerminados());
+                            System.out.println("Partidos ganados: " + equipoBuscado3.getGanados());
+                            System.out.println("Partidos empatados: " + equipoBuscado3.getEmpatados());
+                            System.out.println("Partidos perdidos: " + equipoBuscado3.getPerdidos());
+                            System.out.println("Diferencia de goles: " + equipoBuscado3.getDiferenciaDeGol());
+                            System.out.println("Goles a favor: " + equipoBuscado3.getGolesAFavor());
+                            System.out.println("Goles en contra: " + equipoBuscado3.getGolesEnContra());
 
                             continue interno;
                         case 4:
@@ -248,9 +251,20 @@ public class Consola {
                         case 3:
                             System.out.println("Ingrese el nombre del equipo a buscar: ");
                             String nombreEq3 = scanner.nextLine();scanner.nextLine();
-                            liga.buscarEquipo(nombreEq3);
-                            
-                            
+                            Equipo equipoBuscado3 = liga.buscarEquipo(nombreEq3);
+
+                            System.out.println("Estas son las estadísticas del equipo: ");
+                            System.out.println("Nombre: " + equipoBuscado3.getNombre());
+                            System.out.println("Division: " + equipoBuscado3.getDivision().getNombre());
+                            System.out.println("Puntos obtenidos: " + equipoBuscado3.getPuntos());
+                            System.out.println("Partidos terminados: " + equipoBuscado3.getPartidosTerminados());
+                            System.out.println("Partidos ganados: " + equipoBuscado3.getGanados());
+                            System.out.println("Partidos empatados: " + equipoBuscado3.getEmpatados());
+                            System.out.println("Partidos perdidos: " + equipoBuscado3.getPerdidos());
+                            System.out.println("Diferencia de goles: " + equipoBuscado3.getDiferenciaDeGol());
+                            System.out.println("Goles a favor: " + equipoBuscado3.getGolesAFavor());
+                            System.out.println("Goles en contra: " + equipoBuscado3.getGolesEnContra());
+
                             continue interno;
                         case 4:
                             System.out.println("Ingrese el nombre del jugador a buscar: ");
@@ -299,7 +313,16 @@ public class Consola {
                             
                             continue interno;
                         case 11:
-                            
+                            System.out.println("Ingrese el nombre del equipo");
+                            String nombreEq11 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese el ID con caracteres del equipo");
+                            String nombreDiv11 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese la división del nuevo equipo");
+                            String nombreEqID11 = scanner.nextLine();scanner.nextLine();
+                            Equipo equipo11 = new Equipo(nombreEqID11, nombreEq11, null);
+                            liga.buscarDivision(nombreDiv11).agregarEquipo(equipo11);
+                            System.out.println("Su equipo " + equipo11.getNombre() + "ha quedado ingresado a la división" + liga.getNombre());
+
                             continue interno;
                         case 12:
                             
