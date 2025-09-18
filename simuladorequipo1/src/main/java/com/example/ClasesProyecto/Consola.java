@@ -120,6 +120,15 @@ public class Consola {
                         case 3:
                             continue interno;
                         case 4:
+                            System.out.println("Ingrese el nombre del jugador a buscar: ");
+                            String nombreJ4 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese el nombre del equipo al que pertenece: ");
+                            String nombreEq4 = scanner.nextLine();scanner.nextLine();
+                            Jugador jugBuscado = nuevaLiga.buscarJugador(nombreJ4, nombreEq4);
+                            System.out.println("Estas son las estadísticas del jugador: ");
+                            System.out.println(jugBuscado.getNombre());
+                            System.out.println(jugBuscado.getEdad());
+
                             continue interno;
                         case 5:
                             System.out.println("Ingrese el nombre del equipo a eliminar: ");
