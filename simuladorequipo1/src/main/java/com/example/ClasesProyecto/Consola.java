@@ -83,8 +83,9 @@ public class Consola {
                     System.out.println("10- Consultar partidos jugados.");
                     System.out.println("11- Crear equipo.");
                     System.out.println("12- Crear jugador.");
-                    System.out.println("13- Para volver a elegir entre liga nueva o precargada");
-                    System.out.println("14- Para salir de la aplicación");
+                    System.out.println("13- Para mostrar la tabla de posiciones");
+                    System.out.println("14- Para volver a elegir entre liga nueva o precargada");
+                    System.out.println("15- Para salir de la aplicación");
                     int entrada2 = scanner.nextInt();scanner.nextLine();
 
                     switch(entrada2){
@@ -98,6 +99,7 @@ public class Consola {
                             Division division = nuevaLiga.buscarDivision(div1);
                             Equipo equipo = new Equipo(id1, nombreEq1, division);
                             nuevaLiga.agregarEquipoADivision(division, equipo);
+                            System.out.println("Su equipo ha sido agregado");
 
                             continue interno;
                         case 2:
@@ -109,9 +111,10 @@ public class Consola {
                             String posicion = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese el nombre del equipo: ");
                             String nombreEq = scanner.nextLine();scanner.nextLine();
-                            Equipo e1 = nuevaLiga.buscarEquipo(nombreEq);
+                            Equipo equipo1 = nuevaLiga.buscarEquipo(nombreEq);
                             Jugador jugador = new Jugador(nombreJug, edad, posicion);
-                            nuevaLiga.agregarJugadorAEquipo(e1, jugador);
+                            nuevaLiga.agregarJugadorAEquipo(equipo1, jugador);
+                            System.out.println("Su jugador ha sido agregado");
 
                             continue interno;
                         case 3:
@@ -119,8 +122,20 @@ public class Consola {
                         case 4:
                             continue interno;
                         case 5:
+                            System.out.println("Ingrese el nombre del equipo a eliminar: ");
+                            String nombreEq5 = scanner.nextLine();scanner.nextLine();
+                            nuevaLiga.eliminarEquipo(nombreEq5);
+                            System.out.println("El equipo ha sido eliminado");
+
                             continue interno;
                         case 6:
+                            System.out.println("Ingrese el nombre del jugador a eliminar: ");
+                            String nombreJ6 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese el nombre del equipo: ");
+                            String nombreEq6 = scanner.nextLine();scanner.nextLine();
+                            nuevaLiga.eliminarJugador(nombreJ6, nombreEq6);
+                            System.out.println("El jugador ha sido eliminado");
+                            
                             continue interno;
                         case 7:
                             continue interno;
@@ -135,8 +150,12 @@ public class Consola {
                         case 12:
                             continue interno;
                         case 13:
-                            break interno;
+                            continue interno;
                         case 14:
+                            //Regresa a la pregunta inicial del programa
+                            break interno;
+                        case 15:
+                            //Cierra la aplicación
                             break externo;
                     }
                 }
@@ -163,8 +182,9 @@ public class Consola {
                     System.out.println("10- Consultar partidos jugados.");
                     System.out.println("11- Crear equipo.");
                     System.out.println("12- Crear jugador.");
-                    System.out.println("13- Para volver a elegir entre liga nueva o precargada");
-                    System.out.println("14- Para salir de la aplicación");
+                    System.out.println("13- Para mostrar la tabla de posiciones");
+                    System.out.println("14- Para volver a elegir entre liga nueva o precargada");
+                    System.out.println("15- Para salir de la aplicación");
                     int entrada2 = scanner.nextInt();
                     scanner.nextLine();
                     
@@ -179,6 +199,7 @@ public class Consola {
                             Division division = liga.buscarDivision(div1);
                             Equipo equipo = new Equipo(id1, nombreEq1, division);
                             liga.agregarEquipoADivision(division, equipo);
+                            System.out.println("Su equipo ha sido agregado");
                             
                             continue interno;
                         case 2:
@@ -193,6 +214,7 @@ public class Consola {
                             Equipo e1 = liga.buscarEquipo(nombreEq2);
                             Jugador jugador = new Jugador(nombreJ2, edad, posicion);
                             liga.agregarJugadorAEquipo(e1, jugador);
+                            System.out.println("Su jugador ha sido agregado");
                             
                             continue interno;
                         case 3:
@@ -214,6 +236,7 @@ public class Consola {
                             System.out.println("Ingrese el nombre del equipo a eliminar: ");
                             String nombreEq5 = scanner.nextLine();scanner.nextLine();
                             liga.eliminarEquipo(nombreEq5);
+                            System.out.println("El equipo ha sido eliminado");
                             
                             continue interno;
                         case 6:
@@ -222,6 +245,8 @@ public class Consola {
                             System.out.println("Ingrese el nombre del equipo: ");
                             String nombreEq6 = scanner.nextLine();scanner.nextLine();
                             liga.eliminarJugador(nombreJ6, nombreEq6);
+                            System.out.println("El jugador ha sido eliminado");
+
                             continue interno;
                         case 7:
                             System.out.println(liga.mostrarEquipos());
@@ -242,9 +267,13 @@ public class Consola {
                         case 12:
                             
                             continue interno;
-                        case 13: 
-                            break interno;
+                        case 13:
+                            continue interno;
                         case 14:
+                            //Regresa a la pregunta inicial del programa 
+                            break interno;
+                        case 15:
+                            //Cierra la aplicación
                             break externo;
                         default:
                             System.out.println("ingrese una opción válida");
