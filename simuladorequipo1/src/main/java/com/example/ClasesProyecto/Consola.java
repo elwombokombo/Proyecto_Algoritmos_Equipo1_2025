@@ -194,8 +194,15 @@ public class Consola {
                             String nombreJug12 = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese la edad del jugador");
                             int edadJug12 = scanner.nextInt();scanner.nextLine();
-                            System.out.println("Ingrese la división del nuevo equipo");
-                            String nombreEqID11 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese la posición del jugador");
+                            String posJug12 = scanner.nextLine();scanner.nextLine();
+                            Jugador jugador12 = new Jugador(nombreJug12, edadJug12, posJug12);
+                            System.out.println("Ingrese el equipo de su jugador");
+                            String eqJug12 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese la division de su jugador");
+                            String divJug12 = scanner.nextLine();scanner.nextLine();
+                            nuevaLiga.buscarDivision(divJug12).buscarEquipo(eqJug12).agregarJugador(jugador12);
+
                             continue interno;
                         case 13:
                             continue interno;
