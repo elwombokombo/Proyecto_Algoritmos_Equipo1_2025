@@ -61,7 +61,7 @@ public class Consola {
                 switch (entrada2) {
                     case 1:
                         System.out.println("Ingrese el nombre de la division:");
-                        liga.agregarEquipoADivision(nombreDivision = scanner.nextLine()) 
+                        liga.agregarEquipoADivision(nombreDivision = scanner.nextLine())
                         
                         break;
                     case 2:
