@@ -118,8 +118,36 @@ public class Consola {
 
                             continue interno;
                         case 3:
+                            System.out.println("Ingrese el nombre del equipo a buscar: ");
+                            String nombreEq3 = scanner.nextLine();scanner.nextLine();
+                            Equipo equipoBuscado3 = nuevaLiga.buscarEquipo(nombreEq);
+
+                            System.out.println("Estas son las estadísticas del jugador: ");
+                            System.out.println("Nombre: " + equipoBuscado3.getNombre());
+                            System.out.println("Division: " + equipoBuscado3.getDivision().getNombre());
+                            System.out.println("Puntos obtenidos: " + equipoBuscado3.getPuntos());
+                            System.out.println("Goles convertidos: " + jugBuscado.getGolesConvertidos());
+                            System.out.println("Tarjetas recibidas: " + jugBuscado.getTarjetasRecibidas());
+                            System.out.println("Partidos disputados: " + jugBuscado.getPartidosDisputados());
+                            System.out.println("ID: " + jugBuscado.getId());
+
                             continue interno;
                         case 4:
+                            System.out.println("Ingrese el nombre del jugador a buscar: ");
+                            String nombreJ4 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese el nombre del equipo al que pertenece: ");
+                            String nombreEq4 = scanner.nextLine();scanner.nextLine();
+                            Jugador jugBuscado4 = nuevaLiga.buscarJugador(nombreJ4, nombreEq4);
+                            
+                            System.out.println("Estas son las estadísticas del jugador: ");
+                            System.out.println("Nombre: " + jugBuscado4.getNombre());
+                            System.out.println("Edad: " + jugBuscado4.getEdad());
+                            System.out.println("Posición: " + jugBuscado4.getPosicion());
+                            System.out.println("Goles convertidos: " + jugBuscado4.getGolesConvertidos());
+                            System.out.println("Tarjetas recibidas: " + jugBuscado4.getTarjetasRecibidas());
+                            System.out.println("Partidos disputados: " + jugBuscado4.getPartidosDisputados());
+                            System.out.println("ID: " + jugBuscado4.getId());
+
                             continue interno;
                         case 5:
                             System.out.println("Ingrese el nombre del equipo a eliminar: ");
@@ -229,7 +257,16 @@ public class Consola {
                             String nombreJ4 = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese el nombre del equipo al que pertenece: ");
                             String nombreEq4 = scanner.nextLine();scanner.nextLine();
-                            liga.buscarJugador(nombreJ4, nombreEq4);
+                            Jugador jugBuscado = liga.buscarJugador(nombreJ4, nombreEq4);
+
+                            System.out.println("Estas son las estadísticas del jugador: ");
+                            System.out.println("Nombre: " + jugBuscado.getNombre());
+                            System.out.println("Edad: " + jugBuscado.getEdad());
+                            System.out.println("Posición: " + jugBuscado.getPosicion());
+                            System.out.println("Goles convertidos: " + jugBuscado.getGolesConvertidos());
+                            System.out.println("Tarjetas recibidas: " + jugBuscado.getTarjetasRecibidas());
+                            System.out.println("Partidos disputados: " + jugBuscado.getPartidosDisputados());
+                            System.out.println("ID: " + jugBuscado.getId());
 
                             continue interno;
                         case 5:
