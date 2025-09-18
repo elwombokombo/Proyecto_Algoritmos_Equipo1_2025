@@ -2,8 +2,6 @@ package com.example.ClasesProyecto;
 
 import java.util.Scanner;
 
-import com.example.lista.impl.TDAListaEnlazada;
-
 public class Consola {
 
     private Scanner scanner;
@@ -83,8 +81,8 @@ public class Consola {
                 System.out.println("4- Buscar jugador.");
                 System.out.println("5- Eliminar equipo.");
                 System.out.println("6- Eliminar jugador.");
-                System.out.println("7- Mostrar equipo.");
-                System.out.println("8- Mostrar jugador.");
+                System.out.println("7- Mostrar equipos.");
+                System.out.println("8- Mostrar jugadores.");
                 System.out.println("9- Consultar proximos partidos.");
                 System.out.println("10- Consultar partidos jugados.");
                 System.out.println("11- Crear equipo.");
@@ -95,48 +93,64 @@ public class Consola {
                 switch (entrada2) {
                     case 1:
                         System.out.println("Ingrese el id: ");
-                        String id = scanner.nextLine();
+                        String id1 = scanner.nextLine();scanner.nextLine();
                         System.out.println("Ingrese el nombre del equipo: ");
-                        String nombreEq = scanner.nextLine();
+                        String nombreEq1 = scanner.nextLine();scanner.nextLine();
                         System.out.println("Ingrese la division: ");
-                        String div = scanner.nextLine();
-                        Division division = liga.buscarDivision(div);
-                        Equipo equipo = new Equipo(id, nombreEq, division);
+                        String div1 = scanner.nextLine();scanner.nextLine();
+                        Division division = liga.buscarDivision(div1);
+                        Equipo equipo = new Equipo(id1, nombreEq1, division);
                         liga.agregarEquipoADivision(division, equipo);
                         
                         break;
                     case 2:
                         System.out.println("Ingrese el nombre del jugador: ");
-                        String nombre = scanner.nextLine();scanner.nextLine();
+                        String nombreJ2 = scanner.nextLine();scanner.nextLine();
                         System.out.println("Ingrese la edad: ");
-                        int edad = scanner.nextInt();
+                        int edad = scanner.nextInt();scanner.nextLine();
                         System.out.println("Ingrese la posicion: ");
-                        String posicion = scanner.nextLine();
-                        System.out.println("Ingrese el equipo: ");
-                        String equipoJ = scanner.nextLine();
-                        Equipo equipoJ = liga.buscarEquipo(equipoJ);
-                        Jugador jugador = new Jugador(nombre, edad, posicion);
-                        liga.agregarJugadorAEquipo(equipoJ, jugador);
-
+                        String posicion = scanner.nextLine();scanner.nextLine();
+                        System.out.println("Ingrese el nombre del equipo: ");
+                        String nombreEq2 = scanner.nextLine();scanner.nextLine();
+                        Equipo e1 = liga.buscarEquipo(nombreEq2);
+                        Jugador jugador = new Jugador(nombreJ2, edad, posicion);
+                        liga.agregarJugadorAEquipo(e1, jugador);
                         
                         break;
                     case 3:
+                        System.out.println("Ingrese el nombre del equipo a buscar: ");
+                        String nombreEq3 = scanner.nextLine();scanner.nextLine();
+                        liga.buscarEquipo(nombreEq3);
+                        
                         
                         break;
                     case 4:
-                        
+                        System.out.println("Ingrese el nombre del jugador a buscar: ");
+                        String nombreJ4 = scanner.nextLine();scanner.nextLine();
+                        System.out.println("Ingrese el nombre del equipo al que pertenece: ");
+                        String nombreEq4 = scanner.nextLine();scanner.nextLine();
+                        liga.buscarJugador(nombreJ4, nombreEq4);
+
                         break;
                     case 5:
+                        System.out.println("Ingrese el nombre del equipo a eliminar: ");
+                        String nombreEq5 = scanner.nextLine();scanner.nextLine();
+                        liga.eliminarEquipo(nombreEq5);
                         
                         break;
                     case 6:
-                        
+                        System.out.println("Ingrese el nombre del jugador a eliminar: ");
+                        String nombreJ6 = scanner.nextLine();scanner.nextLine();
+                        System.out.println("Ingrese el nombre del equipo: ");
+                        String nombreEq6 = scanner.nextLine();scanner.nextLine();
+                        liga.eliminarJugador(nombreJ6, nombreEq6);
                         break;
                     case 7:
-                        
+                        System.out.println(liga.mostrarEquipos());
+
                         break;
                     case 8:
-                        
+                        System.out.println(liga.mostrarJugadores());
                         break;
                     case 9:
                         

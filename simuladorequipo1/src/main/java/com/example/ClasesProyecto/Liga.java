@@ -28,14 +28,31 @@ public class Liga {
         return null;
     }
 
-    public Equipo buscarEquipo(String nombre){
+
+    public Equipo buscarEquipo(String nombre) {
         for (int i = 0; i < divisiones.cantElementos(); i++) {
             Division d = divisiones.obtenerPorIndice(i);
             for (int j = 0; j < d.cantElementos(); j++) {
-                Equipo e = 
+                Equipo e = d.obtenerPorIndice(j); 
+                if (e.getNombre().compareTo(nombre) == 0) {
+                    return e; 
+                }
             }
         }
+        return null; 
     }
+
+    public Jugador buscarJugador(String nombreJ, String nombreEquipo){
+        Equipo e = buscarEquipo(nombreEquipo);
+        for (int i = 0; i < e.cantidadDeJugadores(); i++) {
+            Jugador j = e.buscarJugadorPorIndice(i); 
+            if (j.getNombre().equalsIgnoreCase(nombreJ)) { 
+                return j; 
+                }
+        }
+        return null;
+    }
+
 
     public String listarDivisiones() {
         StringBuilder sb = new StringBuilder("Divisiones en la liga:\n");
@@ -47,6 +64,26 @@ public class Liga {
         return sb.toString();
     }
 
+    public String mostrarEquipos() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < divisiones.cantElementos(); i++) {
+            Division d = divisiones.obtenerPorIndice(i);
+            sb.append("División: ").append(d.getNombre()).append("\n");
+            sb.append(d.mostrarEquipos()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String mostrarJugadores(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < divisiones.cantElementos(); i++) {
+            Division d = divisiones.obtenerPorIndice(i);
+            sb.append(d.imprimirJugadores());
+        }
+        return sb.toString();
+    }
+
+
     // Para los equipos
     public void agregarEquipoADivision(Division division, Equipo equipo) {
         division.agregarEquipo(equipo);
@@ -55,6 +92,27 @@ public class Liga {
     // Para los jugadores
     public void agregarJugadorAEquipo(Equipo equipo, Jugador jugador) {
         equipo.agregarJugador(jugador);
+    }
+
+    public boolean eliminarEquipo(String nombreEquipo) {
+        Equipo equipo = buscarEquipo(nombreEquipo);
+        if (equipo == null) {
+            return false; 
+        }
+        Division division = equipo.getDivision(); 
+        return division.eliminarEquipo(equipo);
+    }
+
+    public boolean eliminarJugador(String nombreJugador, String nombreEquipo) {
+        Equipo equipo = buscarEquipo(nombreEquipo);
+        if (equipo == null) {
+            return false;
+        }
+        Jugador jugador = equipo.buscarJugadorPorNombre(nombreJugador);
+        if (jugador == null) {
+            return false; 
+        }
+        return equipo.borrarJugador(jugador) != null;
     }
 
     // para los partidos
