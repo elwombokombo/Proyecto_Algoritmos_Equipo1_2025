@@ -101,6 +101,18 @@ public class Consola {
 
                             continue interno;
                         case 2:
+                            System.out.println("Ingrese el nombre del jugador: ");
+                            String nombreJug = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese la edad: ");
+                            int edad = scanner.nextInt();scanner.nextLine();
+                            System.out.println("Ingrese la posicion: ");
+                            String posicion = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese el nombre del equipo: ");
+                            String nombreEq = scanner.nextLine();scanner.nextLine();
+                            Equipo e1 = nuevaLiga.buscarEquipo(nombreEq);
+                            Jugador jugador = new Jugador(nombreJug, edad, posicion);
+                            nuevaLiga.agregarJugadorAEquipo(e1, jugador);
+
                             continue interno;
                         case 3:
                             continue interno;
