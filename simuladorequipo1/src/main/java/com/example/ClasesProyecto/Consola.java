@@ -144,6 +144,7 @@ public class Consola {
                             
                             System.out.println("Estas son las estadísticas del jugador: ");
                             System.out.println("Nombre: " + jugBuscado4.getNombre());
+                            System.out.println("Equipo: " + jugBuscado4.getEquipo());
                             System.out.println("Edad: " + jugBuscado4.getEdad());
                             System.out.println("Posición: " + jugBuscado4.getPosicion());
                             System.out.println("Goles convertidos: " + jugBuscado4.getGolesConvertidos());
@@ -177,8 +178,24 @@ public class Consola {
                         case 10:
                             continue interno;
                         case 11:
+                            System.out.println("Ingrese el nombre del equipo");
+                            String nombreEq11 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese el ID con caracteres del equipo");
+                            String nombreDiv11 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese la división del nuevo equipo");
+                            String nombreEqID11 = scanner.nextLine();scanner.nextLine();
+                            Equipo equipo11 = new Equipo(nombreEqID11, nombreEq11, nuevaLiga.buscarDivision(nombreDiv11));
+                            nuevaLiga.buscarDivision(nombreDiv11).agregarEquipo(equipo11);
+                            System.out.println("Su equipo " + equipo11.getNombre() + "ha quedado ingresado a la división " + nuevaLiga.buscarDivision(nombreDiv11).getNombre());
+                            
                             continue interno;
                         case 12:
+                            System.out.println("Ingrese el nombre del jugador");
+                            String nombreJug12 = scanner.nextLine();scanner.nextLine();
+                            System.out.println("Ingrese la edad del jugador");
+                            int edadJug12 = scanner.nextInt();scanner.nextLine();
+                            System.out.println("Ingrese la división del nuevo equipo");
+                            String nombreEqID11 = scanner.nextLine();scanner.nextLine();
                             continue interno;
                         case 13:
                             continue interno;
@@ -275,6 +292,7 @@ public class Consola {
 
                             System.out.println("Estas son las estadísticas del jugador: ");
                             System.out.println("Nombre: " + jugBuscado.getNombre());
+                            System.out.println("Equipo: " + jugBuscado.getEquipo());
                             System.out.println("Edad: " + jugBuscado.getEdad());
                             System.out.println("Posición: " + jugBuscado.getPosicion());
                             System.out.println("Goles convertidos: " + jugBuscado.getGolesConvertidos());
@@ -319,9 +337,9 @@ public class Consola {
                             String nombreDiv11 = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese la división del nuevo equipo");
                             String nombreEqID11 = scanner.nextLine();scanner.nextLine();
-                            Equipo equipo11 = new Equipo(nombreEqID11, nombreEq11, null);
+                            Equipo equipo11 = new Equipo(nombreEqID11, nombreEq11, liga.buscarDivision(nombreDiv11));
                             liga.buscarDivision(nombreDiv11).agregarEquipo(equipo11);
-                            System.out.println("Su equipo " + equipo11.getNombre() + "ha quedado ingresado a la división" + liga.getNombre());
+                            System.out.println("Su equipo " + equipo11.getNombre() + "ha quedado ingresado a la división " + liga.buscarDivision(nombreDiv11).getNombre());
 
                             continue interno;
                         case 12:
