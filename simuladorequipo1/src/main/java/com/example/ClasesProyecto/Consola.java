@@ -79,13 +79,13 @@ public class Consola {
                     System.out.println("6- Eliminar jugador.");
                     System.out.println("7- Mostrar equipos.");
                     System.out.println("8- Mostrar jugadores.");
-                    System.out.println("9- Consultar proximos partidos.");
+                    System.out.println("9- Mostrar divisiones.");
                     System.out.println("10- Consultar partidos jugados.");
                     System.out.println("11- Crear equipo.");
                     System.out.println("12- Crear jugador.");
-                    System.out.println("13- Para mostrar la tabla de posiciones");
-                    System.out.println("14- Para volver a elegir entre liga nueva o precargada");
-                    System.out.println("15- Para salir de la aplicación");
+                    System.out.println("13- Para mostrar la tabla de posiciones.");
+                    System.out.println("14- Para volver a elegir entre liga nueva o precargada.");
+                    System.out.println("15- Para salir de la aplicación.");
                     int entrada2 = scanner.nextInt();scanner.nextLine();
 
                     switch(entrada2){
@@ -170,10 +170,18 @@ public class Consola {
                             
                             continue interno;
                         case 7:
+                            System.out.println("Ingrese el nombre de la división cuyos equipos desea ver: ");
+                            String nombreDiv7 = scanner.nextLine();scanner.nextLine();
+                            Division div7 = nuevaLiga.buscarDivision(nombreDiv7);
+                            div7.mostrarEquipos();
+
                             continue interno;
                         case 8:
+
                             continue interno;
                         case 9:
+                            nuevaLiga.listarDivisiones();
+
                             continue interno;
                         case 10:
                             continue interno;
@@ -201,7 +209,7 @@ public class Consola {
                             String eqJug12 = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese la division de su jugador");
                             String divJug12 = scanner.nextLine();scanner.nextLine();
-                            //nuevaLiga.buscarDivision(divJug12).buscarEquipo(eqJug12).agregarJugador(jugador12);
+                            nuevaLiga.buscarDivision(divJug12).buscarEquipoPorNombre(eqJug12).agregarJugador(jugador12);
 
                             continue interno;
                         case 13:
@@ -233,13 +241,13 @@ public class Consola {
                     System.out.println("6- Eliminar jugador.");
                     System.out.println("7- Mostrar equipos.");
                     System.out.println("8- Mostrar jugadores.");
-                    System.out.println("9- Consultar proximos partidos.");
+                    System.out.println("9- Mostrar divisiones.");
                     System.out.println("10- Consultar partidos jugados.");
                     System.out.println("11- Crear equipo.");
                     System.out.println("12- Crear jugador.");
-                    System.out.println("13- Para mostrar la tabla de posiciones");
-                    System.out.println("14- Para volver a elegir entre liga nueva o precargada");
-                    System.out.println("15- Para salir de la aplicación");
+                    System.out.println("13- Para mostrar la tabla de posiciones.");
+                    System.out.println("14- Para volver a elegir entre liga nueva o precargada.");
+                    System.out.println("15- Para salir de la aplicación.");
                     int entrada2 = scanner.nextInt();
                     scanner.nextLine();
                     
@@ -325,14 +333,18 @@ public class Consola {
 
                             continue interno;
                         case 7:
-                            System.out.println(liga.mostrarEquipos());
+                            System.out.println("Ingrese el nombre de la división cuyos equipos desea ver: ");
+                            String nombreDiv7 = scanner.nextLine();scanner.nextLine();
+                            Division div7 = liga.buscarDivision(nombreDiv7);
+                            div7.mostrarEquipos();
 
                             continue interno;
                         case 8:
                             System.out.println(liga.mostrarJugadores());
                             continue interno;
                         case 9:
-                            
+                            liga.listarDivisiones();
+
                             continue interno;
                         case 10:
                             
