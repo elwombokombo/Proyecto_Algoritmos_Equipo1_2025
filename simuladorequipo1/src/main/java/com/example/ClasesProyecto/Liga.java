@@ -32,15 +32,12 @@ public class Liga {
     public Equipo buscarEquipo(String nombre) {
         for (int i = 0; i < divisiones.cantElementos(); i++) {
             Division d = divisiones.obtenerPorIndice(i);
-            for (int j = 0; j < d.cantElementos(); j++) {
-                Equipo e = d.obtenerPorIndice(j); 
-                if (e.getNombre().compareTo(nombre) == 0) {
-                    return e; 
-                }
-            }
+            Equipo e = d.buscarEquipoPorNombre(nombre);
+            if (e != null) return e;
         }
-        return null; 
+        return null;
     }
+
 
     public Jugador buscarJugador(String nombreJ, String nombreEquipo){
         Equipo e = buscarEquipo(nombreEquipo);
@@ -95,12 +92,11 @@ public class Liga {
     }
 
     public boolean eliminarEquipo(String nombreEquipo) {
-        Equipo equipo = buscarEquipo(nombreEquipo);
-        if (equipo == null) {
-            return false; 
+        for (int i = 0; i < divisiones.cantElementos(); i++) {
+            Division d = divisiones.obtenerPorIndice(i);
+            if (d.eliminarEquipoPorNombre(nombreEquipo)) return true;
         }
-        Division division = equipo.getDivision(); 
-        return division.eliminarEquipo(equipo);
+        return false;
     }
 
     public boolean eliminarJugador(String nombreJugador, String nombreEquipo) {

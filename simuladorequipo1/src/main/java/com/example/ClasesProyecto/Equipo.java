@@ -103,13 +103,13 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         return jugadores.cantElementos();
     }
 
-    @Override
+    /*@Override
     public String mostrarJugadores(){
         return "Jugadores del equipo " + this.nombre + ": \n" + jugadores.imprimir( " | " );
-    }
+    }*/
 
-
-    public String mostrarJugadores3() {
+    @Override
+    public String mostrarJugadores() {
         StringBuilder str = new StringBuilder();
         str.append("Jugadores del equipo ").append(this.nombre).append(":\n");
         str.append(jugadores.imprimir("|"));
