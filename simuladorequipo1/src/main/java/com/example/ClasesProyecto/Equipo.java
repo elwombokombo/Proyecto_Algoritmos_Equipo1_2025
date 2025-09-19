@@ -116,28 +116,6 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         str.append(jugadores.imprimir("|"));
         return str.toString();
     }
-    
-
-    // metodo para la tabla de posiciones
-    @Override
-    public Equipo compararPuntaje (Equipo otro){
-        if (this.puntos < otro.getPuntos()){
-            return otro;
-        }
-        else if (this.puntos>otro.getPuntos()) {
-            return this;
-        }
-        else {
-            int dif = Math.max(this.getDiferenciaDeGol(), otro.getDiferenciaDeGol());
-            if (this.getDiferenciaDeGol()==dif){
-                return  this;
-            }
-
-            else{
-                return  otro;
-            }
-        }
-    }
 
     @Override
     public int compareTo (Equipo otro){

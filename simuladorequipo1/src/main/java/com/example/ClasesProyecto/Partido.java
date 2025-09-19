@@ -37,7 +37,7 @@ public class Partido implements IPartido, Comparable<Partido>{
         actualizarEstadisticas();
 
         terminado = true;
-        division.registrarPartido(this);
+        //division.registrarPartido(this);
     }
 
     @Override

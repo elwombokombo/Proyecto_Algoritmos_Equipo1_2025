@@ -375,6 +375,7 @@ public class Consola {
                             String nombreDivision = scanner.nextLine();
                             Division divisionTP = liga.buscarDivision(nombreDivision);
                             System.out.println(divisionTP.tablaDePosiciones());
+                
                             continue interno;
                         case 14:
                             //Regresa a la pregunta inicial del programa 
