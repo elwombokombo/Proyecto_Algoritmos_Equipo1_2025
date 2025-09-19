@@ -58,6 +58,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return false;
     }
 
+    @Override
     public String mostrarEquipos() {
         StringBuilder sb = new StringBuilder("Equipos en la división " + nombre + ":\n");
         for (int i = 0; i < cantElementos(); i++) {

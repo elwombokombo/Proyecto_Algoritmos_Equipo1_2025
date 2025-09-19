@@ -27,17 +27,15 @@ public class Partido implements IPartido, Comparable<Partido>{
     }
 
     @Override
-    // Simula el partido
     public void jugar() {
         if (terminado) return; // no repetir partido
 
-        golesLocal = rnd.nextInt(6);     // 0 a 5 goles
+        golesLocal = rnd.nextInt(6);
         golesVisitante = rnd.nextInt(6);
 
         actualizarEstadisticas();
 
         terminado = true;
-        //division.registrarPartido(this);
     }
 
     @Override
@@ -103,20 +101,6 @@ public class Partido implements IPartido, Comparable<Partido>{
 
     @Override
     public Division getDivision() { return division; }
-
-    /*@Override
-    // Historial global de partidos terminados
-    public Partido ultimoEnHistorial() {
-        return historial.tope();
-    }
-    @Override
-    public Partido desapilarHistorial() {
-        return historial.sacar();
-    }
-    @Override
-    public int cantidadHistorial() {
-        return historial.cantElementos();
-    }*/
    
 
     @Override
