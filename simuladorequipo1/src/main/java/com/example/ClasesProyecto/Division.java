@@ -58,6 +58,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return false;
     }
 
+    @Override
     public String mostrarEquipos() {
         StringBuilder sb = new StringBuilder("Equipos en la división " + nombre + ":\n");
         for (int i = 0; i < cantElementos(); i++) {
@@ -141,53 +142,9 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
     }
     
     //Nueva tabla de posiciones
+
+    @Override
     public String tablaDePosiciones() {
-        if (cantElementos() == 0) {
-            return "No hay equipos en la división " + nombre;
-        }
-
-        // Creamos una copia de los equipos para no alterar la lista original
-        TDAListaEnlazada<Equipo> copiaOrdenada = new TDAListaEnlazada<>();
-        /*for (int i = 0; i < cantElementos(); i++) {
-            copia.insertar(obtenerPorIndice(i));
-        }*/
-
-        // Ordenamos con burbuja usando compareTo de Equipo (ya compara por puntos, DG, GF)
-        for (int i = 0; i < this.cantElementos() - 1; i++) {
-                Equipo e1 = this.obtenerPorIndice(i);
-                copiaOrdenada.insertar(e1);
-                Equipo e2 = this.obtenerPorIndice(++i); 
-                if (e2!=e1.compararPuntaje(e2)) {
-                    e2.getSiguiente() = e1;
-                    // intercambiamos
-                    Equipo temp = e1;
-                    copia.modificarPorIndice(j, e2);
-                    copia.modificarPorIndice(j + 1, temp);
-                }
-                else {
-
-                }
-        }
-
-        // Construimos el string
-        StringBuilder sb = new StringBuilder();
-        sb.append("Tabla de posiciones - División ").append(nombre).append(":\n");
-
-        for (int i = 0; i < copia.cantElementos(); i++) {
-            Equipo e = copia.obtenerPorIndice(i);
-            sb.append((i + 1)).append(". ")
-            .append(e.getNombre())
-            .append(" - ").append(e.getPuntos()).append(" pts, ")
-            .append(e.getGanados()).append("G-")
-            .append(e.getEmpatados()).append("E-")
-            .append(e.getPerdidos()).append("P, DG: ")
-            .append(e.getDiferenciaDeGol()).append("\n");
-        }
-
-        return sb.toString();
-    }
-
-    public String tablaDePosiciones2() {
         if (cantElementos() == 0) {
             return "No hay equipos en la división " + nombre;
         }
@@ -230,9 +187,22 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         }
 
         return sb.toString();
-}
+    }
+    //nuevo
+    public void jugarTodosLosPartidos() {
+        PilaListaEnlazada<Partido> aux = new PilaListaEnlazada<>();
 
+        while (!historialPartidos.esVacia()) {
+            Partido p = historialPartidos.sacar();
+            if (!p.terminado()) {
+                p.jugar(); 
+            }
+            aux.push(p);
+        }
 
-    
+        while (!aux.esVacia()) {
+            historialPartidos.push(aux.sacar());
+        }
+    }
 
 }

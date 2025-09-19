@@ -36,10 +36,10 @@ public class LigaPrecargada {
         liga.agregarEquipoADivision(divisionA, peñarol);
         //2
         Equipo liverpool = new Equipo("LIV", "Liverpool", divisionA); 
-        liga.agregarEquipoADivision(divisionA, peñarol);
+        liga.agregarEquipoADivision(divisionA, liverpool);
         //3
         Equipo racing = new Equipo ("RCG", "Racing", divisionA);
-        liga.agregarEquipoADivision(divisionA, liverpool);
+        liga.agregarEquipoADivision(divisionA, racing);
         //4
         Equipo river = new Equipo ("RIV", "River", divisionA);
         liga.agregarEquipoADivision(divisionA, river);
@@ -53,7 +53,7 @@ public class LigaPrecargada {
         Equipo cerrito = new Equipo ("CRR", "Cerrito", divisionA);
         liga.agregarEquipoADivision(divisionA, cerrito);
         //8
-        Equipo rocha = new Equipo ("RCG", "Rocha", divisionA);
+        Equipo rocha = new Equipo ("RCH", "Rocha", divisionA);
         liga.agregarEquipoADivision(divisionA, rocha);
         //9
         Equipo cerro = new Equipo ("CER", "Cerro", divisionB);
@@ -74,7 +74,7 @@ public class LigaPrecargada {
         Equipo prime = new Equipo ("PRI", "Prime", divisionB);
         liga.agregarEquipoADivision(divisionB, prime);
         //15
-        Equipo palermo = new Equipo ("PLM", "Palermo", divisionB);
+        Equipo palermo = new Equipo ("PAL", "Palermo", divisionB);
         liga.agregarEquipoADivision(divisionB, palermo);
         //16
         Equipo lavalleja = new Equipo ("LVJ", "Lavalleja", divisionB);
@@ -267,6 +267,12 @@ public class LigaPrecargada {
         liga.agregarJugadorAEquipo(lavalleja, jugador79);
         Jugador jugador80 = new Jugador("Pablo",140, "Mediocampista");
         liga.agregarJugadorAEquipo(lavalleja, jugador80);
+
+        liga.programarPartidos(divisionA);
+        liga.programarPartidos(divisionB);
+
+        divisionA.jugarTodosLosPartidos();
+        divisionB.jugarTodosLosPartidos();
         return liga;
         //Seccion de consola
 

@@ -5,7 +5,6 @@ import com.example.ClasesProyecto.Jugador;
 
 public interface IEquipo {
     int compareTo(Equipo otro);
-    Equipo compararPuntaje(Equipo otro);
     Boolean estaVacio ();
     Jugador borrarJugador (Jugador idj);
     Boolean agregarJugador (Jugador jugador);
