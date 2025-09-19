@@ -9,4 +9,6 @@ public interface TDANodo<T extends Comparable<T>> {
     void setSiguiente(TDANodo<T> siguiente);
 
     T getDato();
+    
+    void setDato(T dato);
 }

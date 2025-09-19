@@ -26,6 +26,11 @@ public class Nodo <T extends Comparable<T>> implements TDANodo <T> {
     public T getDato() {
         return dato;
     }
+    //se tuvo que agregar
+    @Override
+    public void setDato(T dato) {
+        this.dato = dato;
+    }
 
     
 }
