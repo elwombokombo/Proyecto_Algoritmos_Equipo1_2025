@@ -3,7 +3,6 @@ package com.example.ClasesProyecto;
 import com.example.Interfaces.IEquipo;
 import com.example.lista.impl.TDAListaEnlazada;
 
-
 public class Equipo implements IEquipo, Comparable<Equipo> {
     private String id;
     private String nombre;
@@ -25,7 +24,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         this.nombre = nombre;
         this.divisionAsignada = division;
         this.jugadores = new TDAListaEnlazada<>();
-        this.calendario = new CalendarioPartido();
+        //this.calendario = new CalendarioPartido<>();
         this.partidosTerminados = 0;
         this.ganados = 0;
         this.empatados = 0;
