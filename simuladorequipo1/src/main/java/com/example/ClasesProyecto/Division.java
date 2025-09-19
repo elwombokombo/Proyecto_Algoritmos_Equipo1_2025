@@ -31,6 +31,16 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return buscar(nombreEquipo);
     }
 
+    public Equipo buscarEquipoPorNombre(String nombreEquipo) {
+        for (int i = 0; i < cantElementos(); i++) {
+            Equipo e = obtenerPorIndice(i);
+            if (e.getNombre().equalsIgnoreCase(nombreEquipo)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
     @Override
     public Boolean agregarEquipo(Equipo nuevo){
         return insertar(nuevo);    
@@ -40,10 +50,21 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
     public Boolean eliminarEquipo(Equipo nombreEquipo) {
         return eliminar(nombreEquipo) != null;
     }
+    public Boolean eliminarEquipoPorNombre(String nombreEquipo) {
+        Equipo e = buscarEquipoPorNombre(nombreEquipo);
+        if (e != null) {
+            return eliminar(e) != null;
+        }
+        return false;
+    }
 
-    @Override
     public String mostrarEquipos() {
-        return imprimir();
+        StringBuilder sb = new StringBuilder("Equipos en la división " + nombre + ":\n");
+        for (int i = 0; i < cantElementos(); i++) {
+            Equipo e = obtenerPorIndice(i);
+            sb.append(" - ").append(e.getNombre()).append("\n");
+        }
+        return sb.toString();
     }
     
     @Override
@@ -53,7 +74,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
 
     for (int i = 0; i < cantElementos(); i++) {
         Equipo equipo = obtenerPorIndice(i);
-        str.append(equipo.mostrarJugadores3()).append("\n");
+        str.append(equipo.mostrarJugadores()).append("\n");
         }
 
     return str.toString();
@@ -99,7 +120,5 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
     public int compareTo(Division o) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-
 
 }
