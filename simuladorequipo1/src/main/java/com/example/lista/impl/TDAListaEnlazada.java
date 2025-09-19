@@ -140,6 +140,23 @@ public class TDAListaEnlazada<T extends Comparable <T>> implements TDALista <T> 
         }
         return null;
     }
+    //Se tuvo que agregar para ahcer el reordenamiento de la tabla de posiciones
+    public void modificarPorIndice(int indice, T nuevoDato) {
+        if (indice < 0) return;
+
+        TDANodo<T> actual = cabeza;
+        int contador = 0;
+
+        while (actual != null) {
+            if (contador == indice) {
+                actual.setDato(nuevoDato);
+                return;
+            }
+            actual = actual.getSiguiente();
+            contador++;
+        }
+    }
+
     
     
 }

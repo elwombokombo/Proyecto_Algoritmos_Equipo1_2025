@@ -81,8 +81,8 @@ public class Consola {
                     System.out.println("8- Mostrar jugadores.");
                     System.out.println("9- Mostrar divisiones.");
                     System.out.println("10- Consultar partidos jugados.");
-                    System.out.println("11- Crear equipo.");
-                    System.out.println("12- Crear jugador.");
+                    //System.out.println("11- Crear equipo.");
+                    //System.out.println("12- Crear jugador.");
                     System.out.println("13- Para mostrar la tabla de posiciones.");
                     System.out.println("14- Para volver a elegir entre liga nueva o precargada.");
                     System.out.println("15- Para salir de la aplicación.");
@@ -213,6 +213,7 @@ public class Consola {
 
                             continue interno;
                         case 13:
+
                             continue interno;
                         case 14:
                             //Regresa a la pregunta inicial del programa
@@ -243,8 +244,8 @@ public class Consola {
                     System.out.println("8- Mostrar jugadores.");
                     System.out.println("9- Mostrar divisiones.");
                     System.out.println("10- Consultar partidos jugados.");
-                    System.out.println("11- Crear equipo.");
-                    System.out.println("12- Crear jugador.");
+                    //System.out.println("11- Crear equipo.");
+                    //System.out.println("12- Crear jugador.");
                     System.out.println("13- Para mostrar la tabla de posiciones.");
                     System.out.println("14- Para volver a elegir entre liga nueva o precargada.");
                     System.out.println("15- Para salir de la aplicación.");
@@ -347,9 +348,13 @@ public class Consola {
 
                             continue interno;
                         case 10:
-                            
+                            System.out.println("Ingrese la division que desea ver los partidos jugados: ");
+                            String div10 = scanner.nextLine();scanner.nextLine();
+                            Division div101 = liga.buscarDivision(div10);
+                            System.out.println(div101.mostrarHistorialString());
+
                             continue interno;
-                        case 11:
+                        case 11://Capaz eliminar
                             System.out.println("Ingrese el nombre del equipo");
                             String nombreEq11 = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese el ID con caracteres del equipo");
@@ -361,10 +366,15 @@ public class Consola {
                             System.out.println("Su equipo " + equipo11.getNombre() + "ha quedado ingresado a la división " + liga.buscarDivision(nombreDiv11).getNombre());
 
                             continue interno;
-                        case 12:
+                        case 12://Capaz eliminar
+                            System.out.println("Ingrese");
                             
                             continue interno;
                         case 13:
+                            System.out.println("Ingrese el nombre de la división:");
+                            String nombreDivision = scanner.nextLine();
+                            Division divisionTP = liga.buscarDivision(nombreDivision);
+                            System.out.println(divisionTP.tablaDePosiciones());
                             continue interno;
                         case 14:
                             //Regresa a la pregunta inicial del programa 

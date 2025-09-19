@@ -69,20 +69,39 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
     
     @Override
     public String imprimirJugadores() {
-    StringBuilder str = new StringBuilder();
-    str.append("Equipos de la división ").append(nombre).append(":\n");
+        StringBuilder str = new StringBuilder();
+        str.append("Equipos de la división ").append(nombre).append(":\n");
 
-    for (int i = 0; i < cantElementos(); i++) {
-        Equipo equipo = obtenerPorIndice(i);
-        str.append(equipo.mostrarJugadores()).append("\n");
-        }
+        for (int i = 0; i < cantElementos(); i++) {
+            Equipo equipo = obtenerPorIndice(i);
+            str.append(equipo.mostrarJugadores()).append("\n");
+            }
 
-    return str.toString();
+        return str.toString();
     }
 
     @Override
     public PilaListaEnlazada<Partido> mostrarHistorial(){
         return historialPartidos;
+    }
+
+    public String mostrarHistorialString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Historial de partidos de la división ").append(nombre).append(":\n");
+
+        PilaListaEnlazada<Partido> aux = new PilaListaEnlazada<>();
+
+        while (!historialPartidos.esVacia()) {
+            Partido p = historialPartidos.sacar();
+            sb.append(p).append("\n"); 
+            aux.push(p);
+        }
+
+        while (!aux.esVacia()) {
+            historialPartidos.push(aux.sacar());
+        }
+
+        return sb.toString();
     }
 
     @Override
@@ -120,5 +139,100 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
     public int compareTo(Division o) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    //Nueva tabla de posiciones
+    public String tablaDePosiciones() {
+        if (cantElementos() == 0) {
+            return "No hay equipos en la división " + nombre;
+        }
+
+        // Creamos una copia de los equipos para no alterar la lista original
+        TDAListaEnlazada<Equipo> copiaOrdenada = new TDAListaEnlazada<>();
+        /*for (int i = 0; i < cantElementos(); i++) {
+            copia.insertar(obtenerPorIndice(i));
+        }*/
+
+        // Ordenamos con burbuja usando compareTo de Equipo (ya compara por puntos, DG, GF)
+        for (int i = 0; i < this.cantElementos() - 1; i++) {
+                Equipo e1 = this.obtenerPorIndice(i);
+                copiaOrdenada.insertar(e1);
+                Equipo e2 = this.obtenerPorIndice(++i); 
+                if (e2!=e1.compararPuntaje(e2)) {
+                    e2.getSiguiente() = e1;
+                    // intercambiamos
+                    Equipo temp = e1;
+                    copia.modificarPorIndice(j, e2);
+                    copia.modificarPorIndice(j + 1, temp);
+                }
+                else {
+
+                }
+        }
+
+        // Construimos el string
+        StringBuilder sb = new StringBuilder();
+        sb.append("Tabla de posiciones - División ").append(nombre).append(":\n");
+
+        for (int i = 0; i < copia.cantElementos(); i++) {
+            Equipo e = copia.obtenerPorIndice(i);
+            sb.append((i + 1)).append(". ")
+            .append(e.getNombre())
+            .append(" - ").append(e.getPuntos()).append(" pts, ")
+            .append(e.getGanados()).append("G-")
+            .append(e.getEmpatados()).append("E-")
+            .append(e.getPerdidos()).append("P, DG: ")
+            .append(e.getDiferenciaDeGol()).append("\n");
+        }
+
+        return sb.toString();
+    }
+
+    public String tablaDePosiciones2() {
+        if (cantElementos() == 0) {
+            return "No hay equipos en la división " + nombre;
+        }
+
+        // Creamos una copia de los equipos para no alterar la lista original
+        TDAListaEnlazada<Equipo> copia = new TDAListaEnlazada<>();
+        for (int i = 0; i < cantElementos(); i++) {
+            copia.insertar(obtenerPorIndice(i));
+        }
+
+        // Ordenamos con burbuja usando compareTo de Equipo (ya compara por puntos, DG, GF)
+        int n = copia.cantElementos();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                Equipo e1 = copia.obtenerPorIndice(j);
+                Equipo e2 = copia.obtenerPorIndice(j + 1);
+
+                if (e1.compareTo(e2) < 0) {
+                    // intercambiamos
+                    Equipo temp = e1;
+                    copia.modificarPorIndice(j, e2);
+                    copia.modificarPorIndice(j + 1, temp);
+                }
+            }
+        }
+
+        // Construimos el string
+        StringBuilder sb = new StringBuilder();
+        sb.append("Tabla de posiciones - División ").append(nombre).append(":\n");
+
+        for (int i = 0; i < copia.cantElementos(); i++) {
+            Equipo e = copia.obtenerPorIndice(i);
+            sb.append((i + 1)).append(". ")
+            .append(e.getNombre())
+            .append(" - ").append(e.getPuntos()).append(" pts, ")
+            .append(e.getGanados()).append("G-")
+            .append(e.getEmpatados()).append("E-")
+            .append(e.getPerdidos()).append("P, DG: ")
+            .append(e.getDiferenciaDeGol()).append("\n");
+        }
+
+        return sb.toString();
+}
+
+
+    
 
 }
