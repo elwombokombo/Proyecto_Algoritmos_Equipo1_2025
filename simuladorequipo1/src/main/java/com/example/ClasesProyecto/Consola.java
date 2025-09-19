@@ -201,7 +201,7 @@ public class Consola {
                             String eqJug12 = scanner.nextLine();scanner.nextLine();
                             System.out.println("Ingrese la division de su jugador");
                             String divJug12 = scanner.nextLine();scanner.nextLine();
-                            nuevaLiga.buscarDivision(divJug12).buscarEquipo(eqJug12).agregarJugador(jugador12);
+                            //nuevaLiga.buscarDivision(divJug12).buscarEquipo(eqJug12).agregarJugador(jugador12);
 
                             continue interno;
                         case 13:

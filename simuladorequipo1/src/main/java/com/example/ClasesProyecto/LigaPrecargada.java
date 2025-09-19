@@ -128,15 +128,15 @@ public class LigaPrecargada {
         liga.agregarJugadorAEquipo(river, jugador20);
     //5
         Jugador jugador21 = new Jugador("Joaquin",23, "Golero");
-        liga.agregarJugadorAEquipo(arsenal, jugador20);
+        liga.agregarJugadorAEquipo(arsenal, jugador21);
         Jugador jugador22 = new Jugador("Fernanda",22, "Defensa");
-        liga.agregarJugadorAEquipo(arsenal, jugador20);
+        liga.agregarJugadorAEquipo(arsenal, jugador22);
         Jugador jugador23 = new Jugador("Pepe",21, "Defensa");
-        liga.agregarJugadorAEquipo(arsenal, jugador20);
+        liga.agregarJugadorAEquipo(arsenal, jugador23);
         Jugador jugador24 = new Jugador("Thiago",20, "Defensa");
-        liga.agregarJugadorAEquipo(arsenal, jugador20);
+        liga.agregarJugadorAEquipo(arsenal, jugador24);
         Jugador jugador25 = new Jugador("Felipe",19, "Delantero");
-        liga.agregarJugadorAEquipo(arsenal, jugador20);
+        liga.agregarJugadorAEquipo(arsenal, jugador25);
     //6
         Jugador jugador26 = new Jugador("Martina",20, "Golero");
         liga.agregarJugadorAEquipo(palmeiras, jugador26);
