@@ -3,16 +3,19 @@ package com.example.ClasesProyecto;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import com.example.lista.impl.PilaListaEnlazada;
+
 public class PartidoTest {
 
     @Test
     public void jugarActualizaEstadisticasYRegistraEnHistorial() {
         Division div = new Division("A", 8);
 
-        div.historialPartidos = new com.example.lista.impl.PilaListaEnlazada<>();
-
         Equipo local = new Equipo("PRL", "Peñarol", div);
         Equipo vis   = new Equipo("LIV", "Liverpool", div);
+
+        div.agregarEquipo(vis);
+        div.agregarEquipo(local);
 
         Partido p = new Partido(local, vis, div);
 
@@ -22,6 +25,7 @@ public class PartidoTest {
         assertEquals(0, vis.getPuntos());
 
         p.jugar();
+        div.registrarPartido(p);  
         // inicia y finaliza
         assertTrue(p.terminado());
 

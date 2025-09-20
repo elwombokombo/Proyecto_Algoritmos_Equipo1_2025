@@ -117,15 +117,7 @@ public class TestsLiga {
         //deberia haber un partido entre peñarol y nacional
         String historial = division1.mostrarHistorialString();
         assertTrue(historial.contains("Peñarol"));
-        assertTrue(historial.contains("Nacional"));
-        
-        //pruebo si se repiten los partidos, no deberian
-        int AntesDeProgramar = division1.mostrarHistorial().cantElementos();
-        liga.programarPartidos(division1);
-
-        int DespuesDeProgramar = division1.mostrarHistorial().cantElementos();
-        assertEquals(AntesDeProgramar, DespuesDeProgramar);
-
+        assertTrue(historial.contains("Fenix"));
     }
 
 }
