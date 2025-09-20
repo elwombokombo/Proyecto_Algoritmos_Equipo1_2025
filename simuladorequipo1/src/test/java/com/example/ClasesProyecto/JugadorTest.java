@@ -11,7 +11,7 @@ class JugadorTest {
     void resetContadorId() {
         Jugador.contadorId = 0;
     }
-
+ 
     @Test
     void constructorGuardaValoresIniciales() {
         Jugador j = new Jugador("Pepe", 20, "Delantero");
