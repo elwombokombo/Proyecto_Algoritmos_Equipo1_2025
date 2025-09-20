@@ -3,10 +3,10 @@ package com.example.ClasesProyecto;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class EquipoTest {                     // <-- public
+public class EquipoTest {                 
 
     @Test
-    public void agregarJugadorVinculaYCuenta() {   // <-- public
+    public void agregarJugadorVinculaYCuenta() {  
         Division div = new Division("A", 8);
         Equipo e = new Equipo("PRL", "Peñarol", div);
         Jugador j = new Jugador("Amadea", 23, "Golero");

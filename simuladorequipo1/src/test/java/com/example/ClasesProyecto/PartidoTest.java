@@ -3,10 +3,6 @@ package com.example.ClasesProyecto;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-/**
- * Tests de Partido SIN modificar la clase de producción.
- * Se validan propiedades invariantes y consistencia de estadísticas.
- */
 public class PartidoTest {
 
     @Test
