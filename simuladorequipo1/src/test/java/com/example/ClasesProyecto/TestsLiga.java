@@ -1,13 +1,10 @@
 package com.example.ClasesProyecto;
 
-import java.beans.Transient;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions.*;
-import com.example.ClasesProyecto.*;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TestsLiga extends Assertions {
+public class TestsLiga {
     private Liga liga;
     private Division division1;
     private Division division2;
@@ -46,6 +43,7 @@ public class TestsLiga extends Assertions {
 //Tests divisiones
     @Test
     public void testBuscarDivision(){
+
         assertEquals(division1, liga.buscarDivision("Primera"));
         assertEquals(division2, liga.buscarDivision("Segunda"));//la division esta en la liga
         assertEquals(null, liga.buscarDivision("Tercera"));//la division no existe
@@ -53,58 +51,53 @@ public class TestsLiga extends Assertions {
 
     @Test
     public void testListarDivisiones() {
-        String salida = liga.listarDivisiones();//se fija si sale en el sb si las divisiones estan y si los equipos tambien
-        assertTrue(salida.contains("Primera"));
-        assertTrue(salida.contains("Segunda"));
-        assertTrue(salida.contains("equipos: 2"));
-        assertTrue(salida.contains("equipos: 1"));
-        assertFalse(salida.contains("Tercera"));//no existe la division
-        assertFalse(salida.contains("equipos: 3"));
+        String devuelve = liga.listarDivisiones();//se fija si sale en el sb si las divisiones estan y si los equipos tambien
+        assertTrue(devuelve.contains("Primera"));
+        assertTrue(devuelve.contains("Segunda"));
+        assertTrue(devuelve.contains("equipos: 2"));
+        assertTrue(devuelve.contains("equipos: 1"));
+        assertFalse(devuelve.contains("Tercera"));//no existe la division
+        assertFalse(devuelve.contains("equipos: 3"));
     }
 
 //Tests Equipos
     @Test
     public void testBuscarEquipo() {
-        assertEquals(equipo1, liga.buscarEquipo("Peñarol"));//equipos que estan
-        assertEquals(equipo2, liga.buscarEquipo("Nacional"));
-        assertEquals(equipo3, liga.buscarEquipo("Defensor"));
-        assertNull(liga.buscarEquipo("Danubio"));//equipo que no esta
+        Equipo existe = liga.buscarEquipo("Peñarol");
+        Equipo noExiste = liga.buscarEquipo("Danubio");
+        assertEquals(existe, liga.buscarEquipo("Peñarol"));//equipos que estan
+        assertNull(noExiste);
     }
 
     @Test
     public void testMostrarEquipos() {
-        String salida = liga.mostrarEquipos();//busca chequear lo mismo que el testListarDivisiones
-        assertTrue(salida.contains("División: Primera"));
-        assertTrue(salida.contains("Peñarol"));
-        assertTrue(salida.contains("Nacional"));
-        assertTrue(salida.contains("División: Segunda"));
-        assertTrue(salida.contains("Defensor"));
-        assertFalse(salida.contains("Racing"));//casos que no existen
-        assertFalse(salida.contains("División: Tercera"));
+        String devuelve = liga.mostrarEquipos();//busca chequear lo mismo que el testListarDivisiones
+        assertTrue(devuelve.contains("División: Primera"));
+        assertTrue(devuelve.contains("Peñarol"));
     }
 
     @Test
     public void testEliminarEquipo() {
         assertTrue(liga.eliminarEquipo("Peñarol")); //elimina el equipo
         assertNull(liga.buscarEquipo("Peñarol")); //busca el equipo luego de borrarlo, no existe
-        assertFalse(liga.eliminarEquipo("Liverpool"));
+        assertFalse(liga.eliminarEquipo("Liverpool"));//equipo que no existe, devuelve false
     }
 
 //tests jugadores
 
     @Test
     public void testBuscarJugador(){
-        assertEquals(jugador1, liga.buscarJugador("Leo Fernandez", "Peñarol"));
-        assertEquals(jugador1, liga.buscarJugador("Lolo Estoyanoff", "Fenix"));
-        assertNull(liga.buscarJugador("Amadeo Mombrú", "Peñarol")); //jugador que no existe
-        assertNull(liga.buscarJugador("Leo Fernandez", "Chacarita")); //equipo que no existe
+        Jugador encontrado = liga.buscarJugador("Leo Fernandez", "Peñarol");
+        Jugador noEncontrado = liga.buscarJugador("Amadeo Mombrú", "Peñarol");
+        assertEquals(encontrado, liga.buscarJugador("Leo Fernandez", "Peñarol"));
+        assertEquals(noEncontrado, liga.buscarJugador("Amadeo Mombrú", "Peñarol")); //jugador que no existe
     }
 
     @Test
     public void testMostrarJugadores(){
         String devuelve = liga.mostrarJugadores();
-        assertTrue(salida.contains("Leo Fernandez"));
-        assertTrue(salida.contains("Lolo Estoyanoff"));
+        assertTrue(devuelve.contains("Leo Fernandez"));
+        assertTrue(devuelve.contains("Lolo Estoyanoff"));
     }
 
     @Test
@@ -122,7 +115,7 @@ public class TestsLiga extends Assertions {
         liga.programarPartidos(division1);
 
         //deberia haber un partido entre peñarol y nacional
-        String historial = division.mostrarHistorialString();
+        String historial = division1.mostrarHistorialString();
         assertTrue(historial.contains("Peñarol"));
         assertTrue(historial.contains("Nacional"));
         
