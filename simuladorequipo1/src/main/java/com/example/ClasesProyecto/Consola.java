@@ -62,6 +62,7 @@ public class Consola {
                 int contadorDivisiones = 0;
                 while (divisionActual!=null) {
                     nuevaLiga.programarPartidos(divisionActual);
+                    divisionActual.jugarTodosLosPartidos();
                     contadorDivisiones +=1;
                     divisionActual = nuevaLiga.divisiones.obtenerPorIndice(contadorDivisiones);
                 }
@@ -80,8 +81,6 @@ public class Consola {
                     System.out.println("8- Mostrar jugadores.");
                     System.out.println("9- Mostrar divisiones.");
                     System.out.println("10- Consultar partidos jugados.");
-                    //System.out.println("11- Crear equipo.");
-                    //System.out.println("12- Crear jugador.");
                     System.out.println("11- Para mostrar la tabla de posiciones.");
                     System.out.println("12- Para volver a elegir entre liga nueva o precargada.");
                     System.out.println("13- Para salir de la aplicación.");
@@ -193,32 +192,9 @@ public class Consola {
                             String nombreDivision = scanner.nextLine();
                             Division divisionTP = nuevaLiga.buscarDivision(nombreDivision);
                             System.out.println(divisionTP.tablaDePosiciones());
-                            /*System.out.println("Ingrese el nombre del equipo");
-                            String nombreEq11 = scanner.nextLine();scanner.nextLine();
-                            System.out.println("Ingrese el ID con caracteres del equipo");
-                            String nombreDiv11 = scanner.nextLine();scanner.nextLine();
-                            System.out.println("Ingrese la división del nuevo equipo");
-                            String nombreEqID11 = scanner.nextLine();scanner.nextLine();
-                            Equipo equipo11 = new Equipo(nombreEqID11, nombreEq11, nuevaLiga.buscarDivision(nombreDiv11));
-                            nuevaLiga.buscarDivision(nombreDiv11).agregarEquipo(equipo11);
-                            System.out.println("Su equipo " + equipo11.getNombre() + "ha quedado ingresado a la división " + nuevaLiga.buscarDivision(nombreDiv11).getNombre());*/
                             
                             continue interno;
                         case 12:
-                            /*System.out.println("Ingrese el nombre del jugador");
-                            String nombreJug12 = scanner.nextLine();scanner.nextLine();
-                            System.out.println("Ingrese la edad del jugador");
-                            int edadJug12 = scanner.nextInt();scanner.nextLine();
-                            System.out.println("Ingrese la posición del jugador");
-                            String posJug12 = scanner.nextLine();scanner.nextLine();
-                            Jugador jugador12 = new Jugador(nombreJug12, edadJug12, posJug12);
-                            System.out.println("Ingrese el equipo de su jugador");
-                            String eqJug12 = scanner.nextLine();scanner.nextLine();
-                            System.out.println("Ingrese la division de su jugador");
-                            String divJug12 = scanner.nextLine();scanner.nextLine();
-                            nuevaLiga.buscarDivision(divJug12).buscarEquipoPorNombre(eqJug12).agregarJugador(jugador12);*/
-
-                            //Regresa a la pregunta inicial del programa
                             break interno;
                             
                         case 13:
@@ -248,8 +224,6 @@ public class Consola {
                     System.out.println("8- Mostrar jugadores.");
                     System.out.println("9- Mostrar divisiones.");
                     System.out.println("10- Consultar partidos jugados.");
-                    //System.out.println("11- Crear equipo.");
-                    //System.out.println("12- Crear jugador.");
                     System.out.println("11- Para mostrar la tabla de posiciones.");
                     System.out.println("12- Para volver a elegir entre liga nueva o precargada.");
                     System.out.println("13- Para salir de la aplicación.");

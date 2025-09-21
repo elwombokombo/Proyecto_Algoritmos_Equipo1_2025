@@ -1,15 +1,40 @@
 # Archivos compilados de Java
 *.class
 
-# Directorios comunes de compilación
+# Directorios de compilación de Maven
+/target/
+
+# Reportes de tests (opcional, si no querés verlos)
+/target/surefire-reports/
+/target/test-classes/
+/target/generated-sources/
+/target/generated-test-sources/
+/target/maven-status/
+
+# Directorios comunes de compilación alternativos
 /bin/
 /out/
-/target/
 
 # Archivos de configuración del IDE
 *.iml
 .idea/
 .vscode/
 
-#Ignorar .txt
-/target/*.txt
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de logs o temporales
+*.log
+*.tmp
+
+# Archivos generados en target
+/target/
+
+# Archivos de reporte de tests generados por Maven Surefire
+*.lst
+TEST-*.xml
+
+
+# Ignora todos los txt del proyecto
+*.txt
