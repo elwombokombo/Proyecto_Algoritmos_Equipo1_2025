@@ -61,7 +61,6 @@ public class DivisionTest{
         assertFalse(division.mostrarEquipos().contains("Liverpool"));
         assertNull(division.buscarEquipoPorNombre("Liverpool"));
 
-        System.out.println(division.mostrarEquipos());
     }
 
 
