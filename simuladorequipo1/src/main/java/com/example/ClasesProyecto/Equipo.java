@@ -62,9 +62,6 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         return jugadores.eliminar(jugador);
     }
 
-    //jugador lewandoski= new Jugador (...)
-    //...
-    //Barcelona.borrarJugador(lewandoski)
 
     @Override
     public Boolean agregarJugador(Jugador nuevo) { 

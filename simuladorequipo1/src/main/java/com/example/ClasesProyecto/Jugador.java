@@ -68,17 +68,6 @@ public class Jugador implements IJugador, Comparable<Jugador> {
     }
 
 
-    /*@Override
-    public TDAListaEnlazada<String> playerStats() {
-
-        s.insertar("Jugador: " + nombre);
-        s.insertar("Posición: " + posicion + " | Edad: " + edad);
-        s.insertar("PJ: " + partidosDisputados);
-        s.insertar("Goles: " + golesConvertidos);
-        s.insertar("Tarjetas: " + tarjetasRecibidas);
-        return s;
-    }*/
-
     @Override
     public String playerStats(){
         StringBuilder str = new StringBuilder();
