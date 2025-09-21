@@ -51,12 +51,18 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return eliminar(nombreEquipo) != null;
     }
     public Boolean eliminarEquipoPorNombre(String nombreEquipo) {
-        Equipo e = buscarEquipoPorNombre(nombreEquipo);
-        if (e != null) {
-            return eliminar(e) != null;
+    for (int i = 0; i < cantElementos(); i++) {
+        Equipo e = obtenerPorIndice(i);
+        if (e.getNombre().equalsIgnoreCase(nombreEquipo)) {
+            eliminar(e); // elimina el nodo internamente
+            return true;
         }
-        return false;
     }
+    return false;
+}
+
+
+
 
     @Override
     public String mostrarEquipos() {
