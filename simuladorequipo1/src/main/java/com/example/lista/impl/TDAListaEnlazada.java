@@ -3,7 +3,7 @@ import com.example.lista.TDALista;
 import com.example.lista.TDANodo;
 
 public class TDAListaEnlazada<T extends Comparable <T>> implements TDALista <T> {
-    protected TDANodo<T> cabeza;
+    private TDANodo<T> cabeza;
     @Override
     public T buscar(Comparable<T> clave) {
         TDANodo<T> actual = cabeza;
@@ -123,23 +123,7 @@ public class TDAListaEnlazada<T extends Comparable <T>> implements TDALista <T> 
         
     }
 
-    public T obtenerPorIndice(Integer indice){
-        if (cabeza == null){
-            return null;
-        }
-
-        TDANodo<T> actual = cabeza;
-        Integer contador = 0;
-
-        while (actual != null){
-            if (indice == contador){
-                return actual.getDato();
-            }
-            contador += 1;
-            actual = actual.getSiguiente();
-        }
-        return null;
-    }
+    
     
     
 }

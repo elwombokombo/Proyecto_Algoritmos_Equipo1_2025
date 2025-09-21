@@ -1,5 +1,6 @@
 package com.example.Interfaces;
 
+
 import com.example.ClasesProyecto.Equipo;
 
 public interface IJugador {
@@ -11,5 +12,3 @@ public interface IJugador {
     void cumpleSancion();
 
     String playerStats();
-}
-

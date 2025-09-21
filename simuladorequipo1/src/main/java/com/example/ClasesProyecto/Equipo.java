@@ -129,4 +129,4 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         return Integer.compare(this.golesAFavor, otro.getGolesAFavor());
     }
 
-}
+=======

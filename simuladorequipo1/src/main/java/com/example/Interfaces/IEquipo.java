@@ -13,5 +13,3 @@ public interface IEquipo {
     String mostrarJugadores();
     String getId();
     
-}
-

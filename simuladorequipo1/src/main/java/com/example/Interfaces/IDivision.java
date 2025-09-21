@@ -1,4 +1,5 @@
 package com.example.Interfaces;
+
 import com.example.ClasesProyecto.Equipo;
 import com.example.ClasesProyecto.Partido;
 import com.example.lista.impl.PilaListaEnlazada;
@@ -18,4 +19,3 @@ public interface IDivision {
     void registrarPartido(Partido partido);
 
     void mostrarTablaDePosiciones();
-}
