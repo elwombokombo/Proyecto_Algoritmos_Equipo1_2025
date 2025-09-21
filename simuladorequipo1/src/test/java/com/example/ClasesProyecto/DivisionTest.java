@@ -56,10 +56,10 @@ public class DivisionTest{
         assertTrue(listado.contains("Danubio"));
 
         // Eliminar Liverpool
-        assertTrue(division.eliminarEquipoPorNombre("Nicolas"));
-        //assertEquals(2, division.cantElementos());
-        //assertFalse(division.mostrarEquipos().contains("Peñarol"));
-        //assertNull(division.buscarEquipoPorNombre("Peñarol"));
+        assertTrue(division.eliminarEquipoPorNombre("Liverpool"));
+        assertEquals(2, division.cantElementos());
+        assertFalse(division.mostrarEquipos().contains("Liverpool"));
+        assertNull(division.buscarEquipoPorNombre("Liverpool"));
 
         System.out.println(division.mostrarEquipos());
     }

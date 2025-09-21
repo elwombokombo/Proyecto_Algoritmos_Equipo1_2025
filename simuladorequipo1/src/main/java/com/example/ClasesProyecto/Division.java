@@ -54,7 +54,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
     for (int i = 0; i < cantElementos(); i++) {
         Equipo e = obtenerPorIndice(i);
         if (e.getNombre().equalsIgnoreCase(nombreEquipo)) {
-            eliminar(e); // elimina el nodo internamente
+            eliminarEquipo(e); // elimina el nodo internamente
             return true;
         }
     }
@@ -155,13 +155,11 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
             return "No hay equipos en la división " + nombre;
         }
 
-        // Creamos una copia de los equipos para no alterar la lista original
         TDAListaEnlazada<Equipo> copia = new TDAListaEnlazada<>();
         for (int i = 0; i < cantElementos(); i++) {
             copia.insertar(obtenerPorIndice(i));
         }
 
-        // Ordenamos con burbuja usando compareTo de Equipo (ya compara por puntos, DG, GF)
         int n = copia.cantElementos();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -169,7 +167,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
                 Equipo e2 = copia.obtenerPorIndice(j + 1);
 
                 if (e1.compareTo(e2) < 0) {
-                    // intercambiamos
+                    
                     Equipo temp = e1;
                     copia.modificarPorIndice(j, e2);
                     copia.modificarPorIndice(j + 1, temp);
@@ -177,7 +175,6 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
             }
         }
 
-        // Construimos el string
         StringBuilder sb = new StringBuilder();
         sb.append("Tabla de posiciones - División ").append(nombre).append(":\n");
 
@@ -194,7 +191,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
 
         return sb.toString();
     }
-    //nuevo
+    
     public void jugarTodosLosPartidos() {
         PilaListaEnlazada<Partido> aux = new PilaListaEnlazada<>();
 

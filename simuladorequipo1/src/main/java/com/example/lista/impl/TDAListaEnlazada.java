@@ -42,7 +42,7 @@ public class TDAListaEnlazada<T extends Comparable <T>> implements TDALista <T> 
             //Orden constante (1) 
             return true;   
     }*/
-
+ 
     @Override
     public T eliminar(Comparable<T> identificador) {
         TDANodo<T> actual = cabeza;
@@ -60,6 +60,9 @@ public class TDAListaEnlazada<T extends Comparable <T>> implements TDALista <T> 
         }
         return null;
     }
+
+
+
 
     @Override
     public int cantElementos() {
