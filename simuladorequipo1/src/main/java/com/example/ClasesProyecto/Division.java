@@ -61,11 +61,8 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         }
     }
     return false;
-}
-
-
-
-
+    }
+    
     @Override
     public String mostrarEquipos() {
         StringBuilder sb = new StringBuilder("Equipos en la división " + nombre + ":\n");
@@ -212,5 +209,12 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
             historialPartidos.push(aux.sacar());
         }
     }
+
+    @Override
+    public void mostrarTablaDePosiciones() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrarTablaDePosiciones'");
+    }
+
 
 }

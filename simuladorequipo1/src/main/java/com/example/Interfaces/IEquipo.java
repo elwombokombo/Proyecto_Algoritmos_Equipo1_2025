@@ -14,6 +14,4 @@ public interface IEquipo {
     String getId();
     Jugador buscarJugadorPorNombre(String nombre);
     Jugador buscarJugadorPorIndice(int i);
-    
 }
-
