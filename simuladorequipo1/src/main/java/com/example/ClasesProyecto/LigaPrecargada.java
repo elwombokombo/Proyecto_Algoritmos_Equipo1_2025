@@ -1,5 +1,4 @@
 package com.example.ClasesProyecto;
-
   /*
     1. Implementar un simulador de la Liga UCU que permita:
 a) Registrar divisiones, equipos y jugadores.
@@ -10,7 +9,6 @@ e) Programar partidos.
 f) Registrar los resultados de los partidos y mantener un historial de los jugados.
 g) Consultar información general de la liga, incluyendo partidos jugados, próximos
 partidos y estadísticas básicas de jugadores y equipos.
-
     */
 public class LigaPrecargada {
     public static Liga crearLiga() {
