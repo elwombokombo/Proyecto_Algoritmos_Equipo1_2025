@@ -1,1 +1,3 @@
 # Proyecto_Algoritmos_Equipo1_2025
+
+//Comentario
