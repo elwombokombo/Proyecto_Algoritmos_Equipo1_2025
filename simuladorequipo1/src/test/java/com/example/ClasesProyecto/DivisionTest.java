@@ -1,27 +1,30 @@
 package com.example.ClasesProyecto;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+;
 
 public class DivisionTest{
      
     private Division division;
 
     @Test
-    //@DisplayName("getNombre() devuelve el nombre de la división")
     void testGetNombre() {
         division = new Division("Primera", 20);
         assertEquals("Primera", division.getNombre());
     }
 
     @Test
-    //@DisplayName("getCantidadEquipos() devuelve la cantidad configurada")
     void testGetCantidadEquipos() {
         division = new Division("Primera", 20);
         assertEquals(20, division.getCantidadEquipos());
     }
 
-    // @DisplayName("agregar y buscar equipos por objeto y por nombre")
     @Test
     void testAgregarYBuscarEquipos() {
         Division division = new Division("A", 3);
@@ -56,7 +59,7 @@ public class DivisionTest{
     }
 
 
-    // @DisplayName("imprimirJugadores() incluye planteles")
+    
     @Test
     void testImprimirJugadoresIncluyePlanteles() {
         Division division = new Division("A", 8);
@@ -73,7 +76,7 @@ public class DivisionTest{
         assertTrue(out.contains("Cata"));
     }
 
-    // @DisplayName("mostrarHistorialString() restaura la pila")
+    
     @Test
     void testRegistrarPartidoYMostrarHistorialStringRestauraPila() {
         Division division = new Division("A", 8);

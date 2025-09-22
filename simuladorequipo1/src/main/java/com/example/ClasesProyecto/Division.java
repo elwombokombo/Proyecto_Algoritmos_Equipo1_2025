@@ -210,11 +210,6 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         }
     }
 
-    @Override
-    public void mostrarTablaDePosiciones() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarTablaDePosiciones'");
-    }
 
 
 }

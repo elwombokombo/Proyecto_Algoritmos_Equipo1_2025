@@ -18,8 +18,6 @@ public interface IDivision {
 
     void registrarPartido(Partido partido);
 
-    void mostrarTablaDePosiciones();
-
     Equipo buscarEquipoPorNombre(String nombreEquipo);
 
     String mostrarHistorialString();
