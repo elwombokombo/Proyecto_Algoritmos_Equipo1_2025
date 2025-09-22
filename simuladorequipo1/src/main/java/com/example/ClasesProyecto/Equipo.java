@@ -101,11 +101,6 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         return jugadores.cantElementos();
     }
 
-    /*@Override
-    public String mostrarJugadores(){
-        return "Jugadores del equipo " + this.nombre + ": \n" + jugadores.imprimir( " | " );
-    }*/
-
     @Override
     public String mostrarJugadores() {
         StringBuilder str = new StringBuilder();
