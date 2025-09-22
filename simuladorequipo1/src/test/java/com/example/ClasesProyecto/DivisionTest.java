@@ -3,13 +3,7 @@
 package com.example.ClasesProyecto;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import com.example.lista.impl.Conjunto;
-import com.example.lista.impl.PilaListaEnlazada;
-import com.example.lista.impl.TDAListaEnlazada;
-import com.example.ClasesProyecto.Equipo;;
+import org.junit.jupiter.api.Test;;
 
 public class DivisionTest{
      
