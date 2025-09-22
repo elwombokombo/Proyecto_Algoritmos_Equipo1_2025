@@ -18,4 +18,14 @@ public interface IDivision {
     void registrarPartido(Partido partido);
 
     String tablaDePosiciones ();
+
+    void jugarTodosLosPartidos();
+
+    boolean yaJugaron(Equipo e1, Equipo e2);
+
+    String mostrarHistorialString();
+
+    Equipo buscarEquipoPorNombre(String nombreEquipo);
+
+
 }

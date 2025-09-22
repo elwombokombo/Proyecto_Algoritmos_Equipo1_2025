@@ -81,6 +81,7 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         return jugadores.buscar(jugador);   
     }
 
+    @Override
     public Jugador buscarJugadorPorNombre(String nombre) {
     for (int i = 0; i < jugadores.cantElementos(); i++) {
         Jugador j = jugadores.obtenerPorIndice(i);
@@ -89,11 +90,12 @@ public class Equipo implements IEquipo, Comparable<Equipo> {
         }
     }
     return null;
-}
+    }
 
+    @Override
     public Jugador buscarJugadorPorIndice(int i) {
     return jugadores.obtenerPorIndice(i);
-}
+    }
    
 
     @Override

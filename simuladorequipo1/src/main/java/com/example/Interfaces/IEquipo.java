@@ -12,6 +12,8 @@ public interface IEquipo {
     int cantidadDeJugadores();
     String mostrarJugadores();
     String getId();
+    Jugador buscarJugadorPorNombre(String nombre);
+    Jugador buscarJugadorPorIndice(int i);
     
 }
 

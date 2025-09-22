@@ -116,6 +116,7 @@ public class Partido implements IPartido, Comparable<Partido>{
         return getMarcador() + " (División: " + division.getNombre() + ")";
     }
 
+    @Override
     public Conjunto<Equipo> getEquiposComoConjunto() {
         Conjunto<Equipo> conjunto = new Conjunto<>();
         conjunto.insertarSinRepetidos(local);

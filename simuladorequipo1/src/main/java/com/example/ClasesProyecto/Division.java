@@ -31,6 +31,8 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return buscar(nombreEquipo);
     }
 
+
+    @Override
     public Equipo buscarEquipoPorNombre(String nombreEquipo) {
         for (int i = 0; i < cantElementos(); i++) {
             Equipo e = obtenerPorIndice(i);
@@ -92,6 +94,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return historialPartidos;
     }
 
+    @Override
     public String mostrarHistorialString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Historial de partidos de la división ").append(nombre).append(":\n");
@@ -116,6 +119,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         historialPartidos.push(partido);
     }
 
+    @Override
     public boolean yaJugaron(Equipo e1, Equipo e2) {
         Conjunto<Equipo> buscados = new Conjunto<>();
         buscados.insertarSinRepetidos(e1);
@@ -192,6 +196,7 @@ public class Division extends TDAListaEnlazada<Equipo> implements IDivision, Com
         return sb.toString();
     }
     
+    @Override
     public void jugarTodosLosPartidos() {
         PilaListaEnlazada<Partido> aux = new PilaListaEnlazada<>();
 
